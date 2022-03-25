@@ -5,6 +5,8 @@ using UnityEngine;
 public class Planet : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 5f;
+        
+    [SerializeField] float planetRadius = 0.4f;
 
     [SerializeField] GameObject TEST_OBJECT;
 
@@ -41,22 +43,21 @@ public class Planet : MonoBehaviour
     private void DoCollisionEvent(GameObject collider)
     {
         // Calculate the angle between Planet and collider
-        //float angle = Vector3.Angle(transform.position, collider.transform.position);
         float angle = Mathf.Atan2(collider.transform.position.y - transform.position.y, collider.transform.position.x - transform.position.x) * 180 / Mathf.PI;
 
-        //Debug.Log("Collider Pos: " + collider.transform.position);
-        //Debug.Log("Planet Pos: " + transform.position);
+        // Calculate the correct distance for the Instantiated GameObject
+        //float planetRadius = 0.4f;
 
-        Debug.Log("Angle is: " + angle);
+        Vector2 desiredPos = transform.position;
+        desiredPos = Vector2.MoveTowards(transform.position, collider.transform.position, planetRadius);
 
-        Quaternion rotation = new Quaternion(0, 0, 45f, 0);
-
-        Debug.Log("Rotation is: " + rotation);
+        Debug.Log("DesiredPos: " + desiredPos);
 
         // Add something as a child on the Planet's surface
-        GameObject thingy = Instantiate(TEST_OBJECT, collider.transform.position, Quaternion.identity) as GameObject;
+        //GameObject thingy = Instantiate(TEST_OBJECT, collider.transform.position, Quaternion.identity) as GameObject;
+        GameObject thingy = Instantiate(TEST_OBJECT, desiredPos, Quaternion.identity) as GameObject;
 
-        // Turn the shit
+        // Turn the instantiated surface gameobject to the correct rotation
         thingy.transform.eulerAngles = new Vector3(0, 0, angle - 90);
 
         // Make the Planet the Parent

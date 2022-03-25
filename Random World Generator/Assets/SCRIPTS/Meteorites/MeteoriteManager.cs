@@ -115,7 +115,7 @@ public class MeteoriteManager : MonoBehaviour
         Vector2 flyDirection = targetPoint.transform.position - throwerPoint.transform.position;
 
         // Create the Meteorite
-        GameObject meteorite = Instantiate(meteorites[0], throwerPoint.transform.position, Quaternion.identity) as GameObject;
+        GameObject meteorite = Instantiate(meteorites[Random.Range(0, meteorites.Length)], throwerPoint.transform.position, Quaternion.identity) as GameObject;
 
         // Give the Meteorite a push!
         Rigidbody2D rb = meteorite.GetComponent<Rigidbody2D>();
