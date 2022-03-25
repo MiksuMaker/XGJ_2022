@@ -8,22 +8,33 @@ public class MeteoriteManager : MonoBehaviour
 
     [SerializeField] GameObject[] randomPoints;
 
+    [Header("Targeting Points")]
+    [SerializeField] GameObject throwerMount;
+    [SerializeField] GameObject targetMount;
+
+    [SerializeField] GameObject throwerPoint;
+    [SerializeField] GameObject targetPoint;
+
+    [Header("Targeting Stats")]
+    [SerializeField] float minRotation = 0f;
+    [SerializeField] float maxRotation = 40f;
+
 
     // Variables
     [Header("Speeds")]
     [SerializeField] private float minSpeed = 1f;
     [SerializeField] private float maxSpeed = 3f;
 
+    [Header("Bools")]
+    [SerializeField] private bool meteoriteSpawningOn = true;
+
 
     void Start()
     {
-        MakeMeteorite();
-    }
+        //MakeMeteorite();
+        //ThrowMeteorite();
 
-
-    void Update()
-    {
-        
+        StartCoroutine(MeteoriteThrower());
     }
 
     //private void MakeMeteorite(Vector2 _pos, Vector2 _target, float _speed)
@@ -79,8 +90,50 @@ public class MeteoriteManager : MonoBehaviour
         return Random.Range(minSpeed, maxSpeed);
     }
 
-    //private Transform GetTarget(GameObject birthPos)
-    //{
-        
-    //}
+    private float GetRandomRotation()
+    {
+        return Random.Range(0f, 360f);
+    }
+
+    private void ThrowMeteorite()
+    {
+        float rotationDegree = GetRandomRotation();
+
+        // Rotate Thrower Mount to random degree
+        throwerMount.transform.eulerAngles = new Vector3(0, 0, rotationDegree);
+
+        // Limit the Random Rotation
+        float currentRotation = Random.Range(minRotation, maxRotation);
+        int[] factor = new int[] { -1, 1 };
+        currentRotation *= factor[Random.Range(0,2)];
+
+        // Rotate Target Mount opposite of ThrowerPoint
+        targetMount.transform.eulerAngles = new Vector3(0, 0, rotationDegree + 180 + currentRotation);
+
+
+        // Calculate the Fly Direction
+        Vector2 flyDirection = targetPoint.transform.position - throwerPoint.transform.position;
+
+        // Create the Meteorite
+        GameObject meteorite = Instantiate(meteorites[0], throwerPoint.transform.position, Quaternion.identity) as GameObject;
+
+        // Give the Meteorite a push!
+        Rigidbody2D rb = meteorite.GetComponent<Rigidbody2D>();
+        rb.AddForce(flyDirection * GetRandomSpeed(), ForceMode2D.Impulse);
+
+
+        // Destroy the Meteorite after some time
+        Destroy(meteorite, 10f);
+    }
+
+    private IEnumerator MeteoriteThrower()
+    {
+        while (meteoriteSpawningOn)
+        {
+            // Throw a Meteorite!
+            ThrowMeteorite();
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
 }
