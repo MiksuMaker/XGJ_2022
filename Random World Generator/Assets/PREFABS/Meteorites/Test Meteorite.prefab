@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4554180463044957725}
   - component: {fileID: 7323859665516362550}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Meteorite Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 9110579743643422767}
   - component: {fileID: 2276843311371993880}
   - component: {fileID: 4161325274864262117}
-  m_Layer: 0
+  - component: {fileID: 1893851378091415240}
+  m_Layer: 7
   m_Name: Test Meteorite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,5 +181,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09d920f5a6ba36443bf9750b97cc1415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1893851378091415240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9110579743643422765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c596f962091706409d2b691afe5023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
