@@ -5,6 +5,9 @@ using UnityEngine;
 public class DraggerGlobal : MonoBehaviour
 {
     Camera camera;
+    private Vector3 _dragOffset;
+    [SerializeField] LayerMask targetMask;
+    Collider2D[] thingsInPull;
 
     [Header("Distance")]
     float distance;
@@ -14,10 +17,10 @@ public class DraggerGlobal : MonoBehaviour
     [Header("Force")]
     float force;
     [SerializeField] float maxForce = 50f;
+    [SerializeField] float forceMultiplier = 10f;
 
     [Header("Group Grab Settings")]
     [SerializeField] float grabRadius = 1f;
-    [SerializeField] LayerMask targetMask;
 
     private void Start()
     {
@@ -25,7 +28,6 @@ public class DraggerGlobal : MonoBehaviour
         targetMask = LayerMask.GetMask("Meteorite");
     }
 
-    private Vector3 _dragOffset;
 
 
     private void OnMouseDown()
@@ -37,13 +39,15 @@ public class DraggerGlobal : MonoBehaviour
         // Test the area near Mouse Click
 
         // Get a list of things in grabbing distance
-        Collider2D[] thingsInPull = Physics2D.OverlapCircleAll(GetMousePos(), grabRadius, targetMask);
+        //Collider2D[] thingsInPull = Physics2D.OverlapCircleAll(GetMousePos(), grabRadius, targetMask);
+        thingsInPull = Physics2D.OverlapCircleAll(GetMousePos(), grabRadius, targetMask);
 
         // Add force to each Meteor within radius towards the mouse
-        for (int i = 0; i < thingsInPull.Length; i++)
-        {
-            thingsInPull[i].GetComponent<Dragger>().DragMeAround();
-        }
+        //for (int i = 0; i < thingsInPull.Length; i++)
+        //{
+        //    Debug.Log("Number of objects in drag: " + (i + 1));
+        //    thingsInPull[i].GetComponent<Dragger>().DragMeAround();
+        //}
     }
 
     Vector3 GetMousePos()
@@ -55,31 +59,41 @@ public class DraggerGlobal : MonoBehaviour
         return mousePos;
     }
 
+    //virtual public void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireSphere(GetMousePos(), grabRadius);
+    //}
+
     private float GetDistance()
     {
         float dist = Vector2.Distance(transform.position, GetMousePos());
         return dist;
     }
 
-    //private void OnMouseDrag()
-    //{
-    //    //transform.position = GetMousePos() + _dragOffset;
+    private void OnMouseDrag()
+    {
+        //transform.position = GetMousePos() + _dragOffset;
 
-    //    // Get Mouse Pos
-    //    //Vector2 mousePos = GetMousePos();
+        // Get Mouse Pos
+        //Vector2 mousePos = GetMousePos();
 
-    //    // Get the Direction
-    //    Vector2 dragDirection;
-    //    dragDirection = GetMousePos() - transform.position;
+        // Get the Direction
+        Vector2 dragDirection;
+        dragDirection = GetMousePos() - transform.position;
 
-    //    // Get Distance
-    //    float dist = GetDistance();
+        // Get Distance
+        float dist = GetDistance();
 
-    //    // Add the Force into correct direction
-    //    rb.AddForce(dragDirection * GetForceAmount(dist), ForceMode2D.Force);
+        // Add the Force into correct direction
+        //rb.AddForce(dragDirection * GetForceAmount(dist), ForceMode2D.Force);
+        for (int i = 0; i < thingsInPull.Length; i++)
+        {
+            Debug.Log("Number of objects in drag: " + (i + 1));
+            thingsInPull[i].GetComponent<Dragger>().DragMeAround();
+        }
 
-    //    //rb.AddForce(flyDirection * GetRandomSpeed(), ForceMode2D.Impulse);
-    //}
+        //rb.AddForce(flyDirection * GetRandomSpeed(), ForceMode2D.Impulse);
+    }
 
     private float GetForceAmount(float dist)
     {
@@ -99,7 +113,7 @@ public class DraggerGlobal : MonoBehaviour
         else
         {
             // Calculate the force according to Distance
-            force = dist * 1.5f;
+            force = dist * forceMultiplier * Time.deltaTime;
             return force;
         }
     }
