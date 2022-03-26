@@ -717,9 +717,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a238ad7ac29384299ea3c20e260a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
   minDistance: 0.2
   maxDistance: 4
   maxForce: 50
+  forceMultiplier: 10
+  grabRadius: 0.5
 --- !u!4 &1228374673
 Transform:
   m_ObjectHideFlags: 0
@@ -1042,6 +1047,10 @@ PrefabInstance:
     - target: {fileID: 9110579743643422765, guid: 9b655b143a95cb9448f4cd0ff1e9e6ff, type: 3}
       propertyPath: m_Name
       value: Test Meteorite
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110579743643422767, guid: 9b655b143a95cb9448f4cd0ff1e9e6ff, type: 3}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9110579743643422769, guid: 9b655b143a95cb9448f4cd0ff1e9e6ff, type: 3}
       propertyPath: m_RootOrder
