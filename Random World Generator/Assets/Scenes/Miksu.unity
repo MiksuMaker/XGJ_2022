@@ -425,14 +425,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917300600}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1173124093}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &917300602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +448,8 @@ MonoBehaviour:
   rotationSpeed: 5
   planetRadius: 0.45
   TEST_OBJECT: {fileID: 5462585733926709990, guid: 1929811b66abffe48bc5fa64e6559974, type: 3}
+  placementAmount: 12
+  placeList: []
 --- !u!58 &917300603
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -834,7 +836,7 @@ MonoBehaviour:
   throwerPoint: {fileID: 798794140}
   targetPoint: {fileID: 2093142148}
   minRotation: 0
-  maxRotation: 100
+  maxRotation: 10
   minSpeed: 0.1
   maxSpeed: 1
   meteoriteSpawningOn: 1
@@ -912,11 +914,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1060154729532494297, guid: 1929811b66abffe48bc5fa64e6559974, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1060154729532494297, guid: 1929811b66abffe48bc5fa64e6559974, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.401
+      value: 0.539
       objectReference: {fileID: 0}
     - target: {fileID: 1060154729532494297, guid: 1929811b66abffe48bc5fa64e6559974, type: 3}
       propertyPath: m_LocalPosition.z
