@@ -30,10 +30,7 @@ public class BEHAVIOUR_VEGE : SPAWNABLE
     private void OnEnable()
     {
         beha = VEGE_BEHA.set_start_pos;
-        if (planet != null)
-        {
-            planet.ModifyAmount(TYPETYPE.types.VEGE, 1);
-        }
+ 
     }
 
     // Update is called once per frame

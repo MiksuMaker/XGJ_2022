@@ -35,10 +35,9 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
     private void OnEnable()
     {
         beha = CLOUD_BEHA.set_start_pos;
-        if (planet != null)
-        {
-            planet.ModifyAmount(TYPETYPE.types.VEGE, 1);
-        }
+
+        StartCoroutine(Dissapear(20f));
+
     }
 
     // Update is called once per frame
@@ -105,17 +104,27 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
         TYPETYPE other = collision.gameObject.GetComponent<TYPETYPE>();
         if (other != null)
         {
-            if (other.getType() == TYPETYPE.types.CLOUD) {
-                grassCreator.SetActive(true);
-                Countdown = CountdownSet;
-                planet.OtherCollision(grassCreator);
-            }
+            //if (other.getType() == TYPETYPE.types.CLOUD) {
+              //  grassCreator.SetActive(true);
+             //   Countdown = CountdownSet;
+             //   planet.OtherCollision(grassCreator);
+            //}
         }
     }
 
     public void Die()
     {
-        planet.ModifyAmount(TYPETYPE.types.VEGE, -1);
         gameObject.SetActive(false);
+    }
+
+
+    IEnumerator Dissapear(float time)
+    {
+        yield return new WaitForSeconds(time);
+        planet.ModifyAmount(TYPETYPE.types.CLOUD, -1);
+        gameObject.SetActive(false);
+
+
+
     }
 }

@@ -25,12 +25,11 @@ public class BEHAVIOUR_STEAM : SPAWNABLE
 
     private void OnEnable()
     {
+
+        StopAllCoroutines();
         transform.position = Vector3.zero;
         beha = STEAM_BEHA.set_start_pos;
-        if (planet != null)
-        {
-            planet.ModifyAmount(TYPETYPE.types.VEGE, 1);
-        }
+   
     }
 
     // Update is called once per frame

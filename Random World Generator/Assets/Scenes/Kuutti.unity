@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obj_LIHIS
       objectReference: {fileID: 0}
+    - target: {fileID: 5259013175601369585, guid: 5dd9497fa8c7cfb4ea6a21b4f6d77f22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dd9497fa8c7cfb4ea6a21b4f6d77f22, type: 3}
 --- !u!1001 &12990459
@@ -316,6 +320,9 @@ MonoBehaviour:
   VEGE_: {fileID: 3766584303183800009, guid: fbc52119c07a40442ad3a3d8bc5462ac, type: 3}
   STEAM_: {fileID: 3310331294350078745, guid: a6a819a977acfed44a522ffdafab0b9a, type: 3}
   CLOUD_: {fileID: 3199079821189389582, guid: 98db0a93b2505144eb471acd109081d0, type: 3}
+  AMOUNT_VEGE: 0
+  AMOUNT_LIHIS: 0
+  AMOUNT_CLOUD: 0
 --- !u!58 &68354544
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -579,7 +586,7 @@ MonoBehaviour:
   minSpeed: 0.1
   maxSpeed: 0.5
   meteoriteSpawningOn: 1
-  showerSpeed: 0.5
+  showerSpeed: 1
 --- !u!4 &523430451
 Transform:
   m_ObjectHideFlags: 0
@@ -650,6 +657,9 @@ MonoBehaviour:
   pooledList_GRASS: []
   objectToPool_GRASS: {fileID: 4910323570458060914, guid: 4835b77331628b74aa30a26a82b515b1, type: 3}
   amountToPool_GRASS: 24
+  pooledList_KALLO: []
+  objectToPool_KALLO: {fileID: 5990419013895057804, guid: f62e2a820d7d35049b8cbc6eb13707f1, type: 3}
+  amountToPool_KALLO: 24
 --- !u!4 &663829871
 Transform:
   m_ObjectHideFlags: 0

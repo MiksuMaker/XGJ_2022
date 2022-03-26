@@ -26,9 +26,9 @@ public class Planet : MonoBehaviour
     [SerializeField] GameObject STEAM_;
     [SerializeField] GameObject CLOUD_;
 
-    int AMOUNT_VEGE = 0;
-    int AMOUNT_LIHIS = 0;
-    int AMOUNT_CLOUD = 0;
+    [SerializeField] int AMOUNT_VEGE = 0;
+    [SerializeField] int AMOUNT_LIHIS = 0;
+    [SerializeField] int AMOUNT_CLOUD = 0;
 
 
 
@@ -137,6 +137,11 @@ public class Planet : MonoBehaviour
         DoCollisionEvent(collider);
     }
 
+  public void OtherOtherCollision(GameObject collider, int pos)
+    {
+        ReactToImpact(collider, pos);
+    }
+
 
     private void DoCollisionEvent(GameObject collider)
     {
@@ -166,6 +171,9 @@ public class Planet : MonoBehaviour
 
     private void ReactToImpact(GameObject thing, int pos)
     {
+
+        if (thing == null) { return; }
+
         GameObject _obj;
 
         while (pos < 0)
@@ -199,6 +207,7 @@ public class Planet : MonoBehaviour
                     default:
                         #region
                         _obj = InstantiateImpactObject(_type, pos);
+                        GetPos(pos).SetActive(false);
                         setPos(pos, _obj);
                         #endregion
                         break;
@@ -232,6 +241,7 @@ public class Planet : MonoBehaviour
                     default:
                         #region
                         _obj = InstantiateImpactObject(TYPETYPE.types.WATER, pos);
+                        GetPos(pos).SetActive(false);
                         setPos(pos, _obj);
                         #endregion
                         break;
@@ -255,6 +265,7 @@ public class Planet : MonoBehaviour
                     default:
                         #region
                         _obj = InstantiateImpactObject(TYPETYPE.types.LAVA, pos);
+                        GetPos(pos).SetActive(false);
                         setPos(pos, _obj);
                         #endregion
                         break;

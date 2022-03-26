@@ -6,14 +6,62 @@ public class BEHAVIOUR_LAVA : SPAWNABLE
 {
     private void OnEnable()
     {
-        StartCoroutine(Dissapear(30f));
+        StopAllCoroutines();
+        StartCoroutine(SpawnLihis(7f));
+        StartCoroutine(Dissapear(20f));
     }
+
+    IEnumerator SpawnLihis(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+
+        if (planet.GetAmount(TYPETYPE.types.LIHIS) < 5)
+        {
+
+            GameObject vege = ObjectPool.SharedInstance.GetPooled_LIHIS();
+
+            planet.ModifyAmount(TYPETYPE.types.LIHIS, 1);
+
+            //now using pooler
+            if (vege != null)
+            {
+                // We'll assign the correct values here cuz object pooling 
+                vege.transform.position = transform.position;
+                vege.GetComponent<SPAWNABLE>().SetListPos(ListPos);
+                vege.transform.eulerAngles = transform.eulerAngles;
+
+                vege.SetActive(true);
+            }
+        }
+
+        StartCoroutine(SpawnLihis(10f));
+
+    }
+
 
     IEnumerator Dissapear(float time)
     {
         yield return new WaitForSeconds(time);
         planet.setPos(ListPos, null);
         gameObject.SetActive(false);
+
+
+
     }
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("WW");
+
+        TYPETYPE other = collision.gameObject.GetComponent<TYPETYPE>();
+        if (other != null)
+        {
+            if (other.getType() == TYPETYPE.types.VEGE) { other.gameObject.GetComponent<BEHAVIOUR_VEGE>().Die(); }
+        }
+    }
+
 
 }
