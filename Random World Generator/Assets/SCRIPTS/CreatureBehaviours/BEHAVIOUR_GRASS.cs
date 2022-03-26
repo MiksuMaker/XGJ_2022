@@ -16,8 +16,37 @@ public class BEHAVIOUR_GRASS : SPAWNABLE
 
     private void OnEnable()
     {
+     
         level = 0;
+        countdown = 0f;
         setLevel(0);
+      
+    }
+
+
+    private void Update()
+    {
+        countdown = Mathf.MoveTowards(countdown, 0, .1f * Time.deltaTime);
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (countdown > 0f) { return; }
+
+        if (collision.GetComponent<TYPETYPE>())
+        {
+            if (collision.GetComponent<TYPETYPE>().getType() == TYPETYPE.types.RAIN)
+            {
+                countdown = 10f;
+                LevelUp();
+            }
+        }
+
+
+
+
     }
 
 
@@ -39,6 +68,7 @@ public class BEHAVIOUR_GRASS : SPAWNABLE
 
     public void setLevel(int _level)
     {
+        
         level = _level;
         switch (level)
         {
@@ -52,6 +82,17 @@ public class BEHAVIOUR_GRASS : SPAWNABLE
                 spr.sprite = level3;
                 break;
         }
+    }
+
+
+    IEnumerator Dissapear(float time)
+    {
+        yield return new WaitForSeconds(time);
+        planet.setPos(ListPos, null);
+        gameObject.SetActive(false);
+
+
+
     }
 
 }

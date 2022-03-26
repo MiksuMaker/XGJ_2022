@@ -55,6 +55,8 @@ public class BEHAVIOUR_WATER : SPAWNABLE
         choose[0] = -1;
         choose[1] = 1;
 
+
+
        planet.OtherOtherCollision(grassSpawn, ListPos + choose[(int)Random.Range(0,2)]);
 
 

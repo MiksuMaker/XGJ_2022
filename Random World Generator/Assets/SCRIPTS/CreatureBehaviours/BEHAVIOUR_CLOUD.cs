@@ -23,6 +23,7 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
 
     [SerializeField] GameObject grassCreator;
     [SerializeField] GameObject colli;
+    [SerializeField] GameObject rain;
 
     private int ListLen;
 
@@ -35,7 +36,7 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
     private void OnEnable()
     {
         beha = CLOUD_BEHA.set_start_pos;
-
+        rain.SetActive(false);
         StartCoroutine(Dissapear(20f));
 
     }
@@ -97,19 +98,26 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == colli) { return; }
+        if (collision.gameObject == colli || collision.gameObject == rain) { return; }
 
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            if (rain.activeSelf == false)
+            {
+                rain.SetActive(true);
+            }
+        
+    }
 
-        TYPETYPE other = collision.gameObject.GetComponent<TYPETYPE>();
-        if (other != null)
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject == colli || collision.gameObject == rain) { return; }
+
+
+        if (rain.activeSelf == true)
         {
-            //if (other.getType() == TYPETYPE.types.CLOUD) {
-              //  grassCreator.SetActive(true);
-             //   Countdown = CountdownSet;
-             //   planet.OtherCollision(grassCreator);
-            //}
+            rain.SetActive(false);
         }
+
     }
 
     public void Die()

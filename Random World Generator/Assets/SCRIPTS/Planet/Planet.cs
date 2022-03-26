@@ -52,29 +52,15 @@ public class Planet : MonoBehaviour
 
     public GameObject GetPos(int pos)
     {
-        while (pos < 0)
-        {
-            pos += GetListLength();
-            //Debug.Log(pos);
-        }
-        if (pos >= GetListLength())
-        {
-            pos -= (pos % (GetListLength()));
-        }
+
+        pos = RoundPos(pos);
         return placeList[pos];
     }
 
     public TYPETYPE.types GetPosType(int pos)
     {
-        while (pos < 0)
-        {
-            pos += GetListLength();
-            //Debug.Log(pos);
-        }
-        if (pos >= GetListLength())
-        {
-            pos = pos % GetListLength();
-        }
+
+        pos = RoundPos(pos);
         if (GetPos(pos) != null){
             return placeList[pos].GetComponent<TYPETYPE>().getType();
         }
@@ -88,15 +74,7 @@ public class Planet : MonoBehaviour
 
     public void setPos(int pos, GameObject obj)
     {
-        while (pos < 0)
-        {
-            pos += GetListLength();
-            //Debug.Log(pos);
-        }
-        if (pos >= GetListLength())
-        {
-            pos = pos % GetListLength();
-        }
+        pos = RoundPos(pos);
         placeList[pos] = obj;
     }
 
@@ -139,7 +117,29 @@ public class Planet : MonoBehaviour
 
   public void OtherOtherCollision(GameObject collider, int pos)
     {
+
+        pos = RoundPos(pos);
+
         ReactToImpact(collider, pos);
+    }
+
+
+
+
+    private int RoundPos(int _pos)
+    {
+        while (_pos < 0)
+        {
+            _pos += GetListLength();
+            //Debug.Log(pos);
+        }
+        if (_pos >= GetListLength())
+        {
+            _pos = _pos % GetListLength();
+        }
+
+        return _pos;
+
     }
 
 

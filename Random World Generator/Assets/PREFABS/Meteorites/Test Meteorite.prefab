@@ -95,7 +95,11 @@ GameObject:
   - component: {fileID: 2276843311371993880}
   - component: {fileID: 4161325274864262117}
   - component: {fileID: 1893851378091415240}
+<<<<<<< Updated upstream
   - component: {fileID: -2371003638596790213}
+=======
+  - component: {fileID: 1332836254302426376}
+>>>>>>> Stashed changes
   m_Layer: 7
   m_Name: Test Meteorite
   m_TagString: Untagged
@@ -197,10 +201,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistance: 0.2
+<<<<<<< Updated upstream
   maxDistance: 4
   maxForce: 50
   maxVelocity: 5
 --- !u!114 &-2371003638596790213
+=======
+  maxDistance: 1
+  forceMultiplier: 100
+  maxForce: 5
+  maxVelocity: 1
+--- !u!114 &1332836254302426376
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

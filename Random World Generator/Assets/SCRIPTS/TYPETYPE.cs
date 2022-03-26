@@ -8,7 +8,7 @@ public class TYPETYPE : MonoBehaviour
     {
         TREE,LAVA,WATER,STEAM,CLOUD,GRASS,
 
-        LAND,
+        LAND, RAIN,
 
         VEGE,LIHIS,
 

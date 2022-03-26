@@ -586,7 +586,7 @@ MonoBehaviour:
   minSpeed: 0.1
   maxSpeed: 0.5
   meteoriteSpawningOn: 1
-  showerSpeed: 1
+  showerSpeed: 0.5
 --- !u!4 &523430451
 Transform:
   m_ObjectHideFlags: 0
