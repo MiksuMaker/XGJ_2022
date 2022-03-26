@@ -88,7 +88,6 @@ public class DraggerGlobal : MonoBehaviour
         //rb.AddForce(dragDirection * GetForceAmount(dist), ForceMode2D.Force);
         for (int i = 0; i < thingsInPull.Length; i++)
         {
-            Debug.Log("Number of objects in drag: " + (i + 1));
             thingsInPull[i].GetComponent<Dragger>().DragMeAround();
         }
 
