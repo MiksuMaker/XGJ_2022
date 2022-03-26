@@ -49,6 +49,10 @@ public class Planet : MonoBehaviour
             pos += GetListLength();
             //Debug.Log(pos);
         }
+        if (pos > GetListLength())
+        {
+            pos -= (pos % (GetListLength() - 1));
+        }
         return placeList[pos];
     }
 

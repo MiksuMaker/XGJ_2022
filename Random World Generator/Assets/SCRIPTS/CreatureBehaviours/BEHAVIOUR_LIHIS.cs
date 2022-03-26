@@ -82,7 +82,7 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
                 break;
             case VEGE_BEHA.stop:
-
+                SetPosition(curPos);
                 break;
         }
     }
@@ -104,17 +104,18 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
 
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
-        TYPETYPE other= collision.gameObject.GetComponent<TYPETYPE>();
+
+        
+        TYPETYPE other = collision.gameObject.GetComponent<TYPETYPE>();
         if (other != null)
         {
-            Debug.Log("WW");
             if (other.getType() == TYPETYPE.types.VEGE) { other.gameObject.GetComponent<BEHAVIOUR_VEGE>().Die(); }
         }
     }
+
+
 
 
 
