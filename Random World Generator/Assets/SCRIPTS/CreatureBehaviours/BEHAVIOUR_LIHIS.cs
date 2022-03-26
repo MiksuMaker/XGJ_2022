@@ -26,30 +26,14 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
     private int ListLen;
 
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //ListLen = 32;
-
-        //float desiredAngle = curPos * (360 / ListLen);
-        //transform.eulerAngles = new Vector3(0, 0, (desiredAngle - 90f + planet.GetEulerAngles()));
-
-    }
-
-
-
+    Coroutine Hungerco;
 
     private void OnEnable()
     {
         beha = VEGE_BEHA.set_start_pos;
-        if (planet != null)
-        {
-            planet.ModifyAmount(TYPETYPE.types.VEGE, 1);
-        }
+
+        Hungerco = StartCoroutine(DieOfHunger(15f));
+  
     }
 
     // Update is called once per frame
@@ -107,16 +91,41 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        
-        TYPETYPE other = collision.gameObject.GetComponent<TYPETYPE>();
-        if (other != null)
+        if (collision.gameObject.GetComponent<BEHAVIOUR_VEGE>())
         {
-            if (other.getType() == TYPETYPE.types.VEGE) { other.gameObject.GetComponent<BEHAVIOUR_VEGE>().Die(); }
+                StopCoroutine(Hungerco);
+                Hungerco = StartCoroutine(DieOfHunger(15f));
+                
+                collision.gameObject.GetComponent<BEHAVIOUR_VEGE>().Die(); 
         }
     }
 
 
 
+    IEnumerator DieOfHunger(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+
+        GameObject vege = ObjectPool.SharedInstance.GetPooled_KALLO();
+
+        //now using pooler
+        if (vege != null)
+        {
+            // We'll assign the correct values here cuz object pooling 
+            vege.transform.position = transform.position;
+            vege.transform.eulerAngles = transform.eulerAngles;
+            vege.transform.parent = planet.transform;
+
+            vege.SetActive(true);
+        }
+
+        planet.ModifyAmount(TYPETYPE.types.LIHIS, -1);
+        gameObject.SetActive(false);
+
+
+
+    }
 
 
 
@@ -124,7 +133,7 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
     public void Die()
     {
-        planet.ModifyAmount(TYPETYPE.types.VEGE, -1);
+        planet.ModifyAmount(TYPETYPE.types.LIHIS, -1);
         gameObject.SetActive(false);
     }
 

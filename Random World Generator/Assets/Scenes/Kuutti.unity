@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obj_LIHIS
       objectReference: {fileID: 0}
+    - target: {fileID: 5259013175601369585, guid: 5dd9497fa8c7cfb4ea6a21b4f6d77f22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dd9497fa8c7cfb4ea6a21b4f6d77f22, type: 3}
 --- !u!1001 &12990459
@@ -308,8 +312,17 @@ MonoBehaviour:
   rotationSpeed: 2
   planetRadius: 0.45
   TEST_OBJECT: {fileID: 755699866486666816, guid: c1dab72148cb6064fb3b59ab2cbc711d, type: 3}
-  placementAmount: 18
+  placementAmount: 24
   placeList: []
+  LAVA_: {fileID: 3589218247601545542, guid: 9263c8903c3b2514485211abcf393da5, type: 3}
+  WATER_: {fileID: 755699866486666816, guid: c1dab72148cb6064fb3b59ab2cbc711d, type: 3}
+  LIHIS_: {fileID: 5259013175601369585, guid: 5dd9497fa8c7cfb4ea6a21b4f6d77f22, type: 3}
+  VEGE_: {fileID: 3766584303183800009, guid: fbc52119c07a40442ad3a3d8bc5462ac, type: 3}
+  STEAM_: {fileID: 3310331294350078745, guid: a6a819a977acfed44a522ffdafab0b9a, type: 3}
+  CLOUD_: {fileID: 3199079821189389582, guid: 98db0a93b2505144eb471acd109081d0, type: 3}
+  AMOUNT_VEGE: 0
+  AMOUNT_LIHIS: 0
+  AMOUNT_CLOUD: 0
 --- !u!58 &68354544
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -622,13 +635,31 @@ MonoBehaviour:
   planet: {fileID: 68354543}
   pooledList_METEORITE: []
   objectToPool_METEORITE: {fileID: 9110579743643422765, guid: 9b655b143a95cb9448f4cd0ff1e9e6ff, type: 3}
-  amountToPool_METEORITE: 32
+  amountToPool_METEORITE: 24
   pooledList_VEGE: []
   objectToPool_VEGE: {fileID: 3766584303183800009, guid: fbc52119c07a40442ad3a3d8bc5462ac, type: 3}
-  amountToPool_VEGE: 32
+  amountToPool_VEGE: 24
+  pooledList_LIHIS: []
+  objectToPool_LIHIS: {fileID: 5259013175601369585, guid: 5dd9497fa8c7cfb4ea6a21b4f6d77f22, type: 3}
+  amountToPool_LIHIS: 24
+  pooledList_LAVA: []
+  objectToPool_LAVA: {fileID: 3589218247601545542, guid: 9263c8903c3b2514485211abcf393da5, type: 3}
+  amountToPool_LAVA: 24
+  pooledList_CLOUD: []
+  objectToPool_CLOUD: {fileID: 3199079821189389582, guid: 98db0a93b2505144eb471acd109081d0, type: 3}
+  amountToPool_CLOUD: 24
+  pooledList_STEAM: []
+  objectToPool_STEAM: {fileID: 3310331294350078745, guid: a6a819a977acfed44a522ffdafab0b9a, type: 3}
+  amountToPool_STEAM: 24
   pooledList_WATER: []
   objectToPool_WATER: {fileID: 755699866486666816, guid: c1dab72148cb6064fb3b59ab2cbc711d, type: 3}
-  amountToPool_WATER: 32
+  amountToPool_WATER: 24
+  pooledList_GRASS: []
+  objectToPool_GRASS: {fileID: 4910323570458060914, guid: 4835b77331628b74aa30a26a82b515b1, type: 3}
+  amountToPool_GRASS: 24
+  pooledList_KALLO: []
+  objectToPool_KALLO: {fileID: 5990419013895057804, guid: f62e2a820d7d35049b8cbc6eb13707f1, type: 3}
+  amountToPool_KALLO: 24
 --- !u!4 &663829871
 Transform:
   m_ObjectHideFlags: 0
