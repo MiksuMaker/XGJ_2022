@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3598487494073995099}
   - component: {fileID: 3598487494073995077}
-  - component: {fileID: 5766812744041258098}
   - component: {fileID: 8174446570433290817}
   m_Layer: 0
   m_Name: Test Meteorite 4
@@ -55,39 +54,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &5766812744041258098
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3598487494073995079}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.058377743, y: 0.13699108}
-      - {x: -0.05512294, y: 0.14743161}
-      - {x: -0.13497317, y: 0.073357284}
-      - {x: -0.13156193, y: -0.058469385}
-      - {x: -0.05492997, y: -0.14386678}
-      - {x: 0.054822326, y: -0.1463849}
-      - {x: 0.13441789, y: -0.050320208}
-      - {x: 0.1460979, y: 0.049949884}
 --- !u!61 &8174446570433290817
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -95,6 +95,9 @@ GameObject:
   - component: {fileID: 2276843311371993880}
   - component: {fileID: 4161325274864262117}
   - component: {fileID: 1893851378091415240}
+  - component: {fileID: -4302904067367183258}
+  - component: {fileID: -2885102184359400008}
+  - component: {fileID: 7664530459514886476}
   m_Layer: 7
   m_Name: Test Meteorite
   m_TagString: Untagged
@@ -111,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 9110579743643422765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20, y: 4.16, z: 1}
-  m_LocalScale: {x: 0.44343, y: 0.44343, z: 0.44343}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4554180463044957725}
   m_Father: {fileID: 0}
@@ -200,3 +203,45 @@ MonoBehaviour:
   forceMultiplier: 100
   maxForce: 5
   maxVelocity: 1
+--- !u!114 &-4302904067367183258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9110579743643422765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872ae374e75df2744b0585848e6feb20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  this_type: 2
+--- !u!114 &-2885102184359400008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9110579743643422765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b59a762ee565145849d9d2971ad837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7664530459514886476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9110579743643422765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4666ed6dfca4f9418fb0d5b0c42d0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - {fileID: 4064422262915019659, guid: 79a51418a5bf6af4bae702193573c1f2, type: 3}
+  - {fileID: 685781354530876206, guid: 93738509f6a9fe945a310c4ae46755e6, type: 3}
+  - {fileID: 3818670934635019929, guid: d0db967467b742f4cadc7f7949dd9531, type: 3}
+  maxLifetime: 5

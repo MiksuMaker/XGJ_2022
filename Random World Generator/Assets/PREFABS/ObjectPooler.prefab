@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1857586008405076967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1857586008405076965}
+  - component: {fileID: 1857586008405076964}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1857586008405076965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857586008405076967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03453648, y: 0.23259522, z: -0.7227602}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1857586008405076964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857586008405076967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ce64b6cf45f964e9f07e0900c0e2f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: {fileID: 0}
+  pooledList_METEORITE: []
+  objectToPool_METEORITE: {fileID: 4984859502223108073, guid: a7dc0a04484ec2f40a6a828ad4bbf808, type: 3}
+  amountToPool_METEORITE: 60
+  pooledList_VEGE: []
+  objectToPool_VEGE: {fileID: 3766584303183800009, guid: fbc52119c07a40442ad3a3d8bc5462ac, type: 3}
+  amountToPool_VEGE: 24
+  pooledList_LIHIS: []
+  objectToPool_LIHIS: {fileID: 5259013175601369585, guid: 5dd9497fa8c7cfb4ea6a21b4f6d77f22, type: 3}
+  amountToPool_LIHIS: 24
+  pooledList_LAVA: []
+  objectToPool_LAVA: {fileID: 3589218247601545542, guid: 9263c8903c3b2514485211abcf393da5, type: 3}
+  amountToPool_LAVA: 24
+  pooledList_CLOUD: []
+  objectToPool_CLOUD: {fileID: 3199079821189389582, guid: 98db0a93b2505144eb471acd109081d0, type: 3}
+  amountToPool_CLOUD: 24
+  pooledList_STEAM: []
+  objectToPool_STEAM: {fileID: 3310331294350078745, guid: a6a819a977acfed44a522ffdafab0b9a, type: 3}
+  amountToPool_STEAM: 24
+  pooledList_WATER: []
+  objectToPool_WATER: {fileID: 755699866486666816, guid: c1dab72148cb6064fb3b59ab2cbc711d, type: 3}
+  amountToPool_WATER: 24
+  pooledList_GRASS: []
+  objectToPool_GRASS: {fileID: 4910323570458060914, guid: 4835b77331628b74aa30a26a82b515b1, type: 3}
+  amountToPool_GRASS: 24
+  pooledList_KALLO: []
+  objectToPool_KALLO: {fileID: 5990419013895057804, guid: f62e2a820d7d35049b8cbc6eb13707f1, type: 3}
+  amountToPool_KALLO: 24
