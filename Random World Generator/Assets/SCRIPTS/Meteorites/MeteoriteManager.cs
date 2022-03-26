@@ -28,6 +28,8 @@ public class MeteoriteManager : MonoBehaviour
     [Header("Bools")]
     [SerializeField] private bool meteoriteSpawningOn = true;
 
+    [SerializeField] private float showerSpeed = 0.01f;
+
 
     void Start()
     {
@@ -164,7 +166,7 @@ public class MeteoriteManager : MonoBehaviour
             // Throw a Meteorite!
             ThrowMeteorite();
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(showerSpeed);
         }
     }
 }
