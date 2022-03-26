@@ -105,7 +105,7 @@ public class Planet : MonoBehaviour
 
         // Add something as a child on the Planet's surface
         GameObject thingy = Instantiate(TEST_OBJECT, transform.position, Quaternion.identity) as GameObject;
-
+        thingy.transform.position = new Vector3(thingy.transform.position.x, thingy.transform.position.y, -1);
         // Turn the instantiated surface gameobject to the correct rotation
         thingy.transform.eulerAngles = new Vector3(0, 0, (desiredAngle - 90f + transform.localEulerAngles.z));
 
