@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 9110579743643422769}
   - component: {fileID: 9110579743643422767}
   - component: {fileID: 2276843311371993880}
+  - component: {fileID: 4161325274864262117}
   m_Layer: 0
   m_Name: Test Meteorite
   m_TagString: Untagged
@@ -108,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9110579743643422765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.12, y: 4.16, z: 0}
+  m_LocalPosition: {x: 20, y: 4.16, z: 0}
   m_LocalScale: {x: 0.44343, y: 0.44343, z: 0.44343}
   m_Children:
   - {fileID: 4554180463044957725}
@@ -169,3 +170,15 @@ PolygonCollider2D:
       - {x: 0.054822326, y: -0.1463849}
       - {x: 0.13441789, y: -0.050320208}
       - {x: 0.1460979, y: 0.049949884}
+--- !u!114 &4161325274864262117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9110579743643422765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d920f5a6ba36443bf9750b97cc1415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -64,6 +64,7 @@ public class Planet : MonoBehaviour
         thingy.transform.parent = gameObject.transform;
 
         // Destroy the Meteorite object
-        Destroy(collider);
+        //Destroy(collider);
+        collider.SetActive(false);
     }
 }

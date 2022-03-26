@@ -72,17 +72,32 @@ public class MeteoriteManager : MonoBehaviour
 
 
         // Instantiate at RandomPoint
-        GameObject thisMeteorite = Instantiate(meteorites[0], birthPos.position, Quaternion.identity) as GameObject;
+        //GameObject thisMeteorite = Instantiate(meteorites[0], birthPos.position, Quaternion.identity) as GameObject;
 
-        // Calculate Fly Direction
-        Vector2 flyDirection = targetPos.position - birthPos.position;
-        Debug.Log("TargetPos: " + targetPos.position);
-        Debug.Log("BirthPos: " + birthPos.position);
+        //now using pooler
+        GameObject thisMeteorite = ObjectPool.SharedInstance.GetPooled_METEORITE();
+        if (thisMeteorite != null)
+        {
 
-        // Give Speed and Shoot
-        Rigidbody2D rb = thisMeteorite.GetComponent<Rigidbody2D>();
-        //rb.AddForce(Vector2.left * GetRandomSpeed());     // Old, delete
-        rb.AddForce(flyDirection * GetRandomSpeed());
+            // We'll assign the correct values here cuz object pooling 
+            thisMeteorite.transform.position = birthPos.position;
+            thisMeteorite.transform.rotation = Quaternion.identity;
+            thisMeteorite.SetActive(true);
+
+            // Calculate Fly Direction
+            Vector2 flyDirection = targetPos.position - birthPos.position;
+            Debug.Log("TargetPos: " + targetPos.position);
+            Debug.Log("BirthPos: " + birthPos.position);
+
+            // Give Speed and Shoot
+            Rigidbody2D rb = thisMeteorite.GetComponent<Rigidbody2D>();
+            //rb.AddForce(Vector2.left * GetRandomSpeed());     // Old, delete
+            rb.velocity = Vector3.zero;
+            rb.AddForce(flyDirection * GetRandomSpeed());
+
+
+
+        }
     }
 
     private float GetRandomSpeed()
@@ -115,15 +130,31 @@ public class MeteoriteManager : MonoBehaviour
         Vector2 flyDirection = targetPoint.transform.position - throwerPoint.transform.position;
 
         // Create the Meteorite
-        GameObject meteorite = Instantiate(meteorites[Random.Range(0, meteorites.Length)], throwerPoint.transform.position, Quaternion.identity) as GameObject;
 
-        // Give the Meteorite a push!
-        Rigidbody2D rb = meteorite.GetComponent<Rigidbody2D>();
-        rb.AddForce(flyDirection * GetRandomSpeed(), ForceMode2D.Impulse);
+        //GameObject meteorite = Instantiate(meteorites[Random.Range(0, meteorites.Length)], throwerPoint.transform.position, Quaternion.identity) as GameObject;
+        GameObject meteorite = ObjectPool.SharedInstance.GetPooled_METEORITE();
+
+        //now using pooler
+        if (meteorite != null)
+        {
+
+            // We'll assign the correct values here cuz object pooling 
+            meteorite.transform.position = throwerPoint.transform.position;
+            meteorite.transform.rotation = Quaternion.identity;
+            meteorite.SetActive(true);
 
 
-        // Destroy the Meteorite after some time
-        Destroy(meteorite, 10f);
+            // Give the Meteorite a push!
+            Rigidbody2D rb = meteorite.GetComponent<Rigidbody2D>();
+            rb.velocity = Vector3.zero;
+            rb.AddForce(flyDirection * GetRandomSpeed(), ForceMode2D.Impulse);
+
+
+            // Destroy the Meteorite after some time
+            //Destroy(meteorite, 10f);
+            meteorite.GetComponent<Deactivatable>().DelayDeactivate(10f);
+            
+        }
     }
 
     private IEnumerator MeteoriteThrower()
