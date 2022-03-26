@@ -5,7 +5,7 @@ using UnityEngine;
 public class BEHAVIOUR_GRASS : SPAWNABLE
 {
 
-    float countdown = 0f;
+    [SerializeField] float countdown = 0f;
 
     [SerializeField] SpriteRenderer spr;
     [SerializeField] Sprite level1;
@@ -26,7 +26,7 @@ public class BEHAVIOUR_GRASS : SPAWNABLE
 
     private void Update()
     {
-        countdown = Mathf.MoveTowards(countdown, 0, .1f * Time.deltaTime);
+        countdown = Mathf.MoveTowards(countdown, 0, 1f * Time.deltaTime);
     }
 
 
