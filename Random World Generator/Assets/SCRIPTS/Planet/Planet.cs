@@ -40,11 +40,32 @@ public class Planet : MonoBehaviour
         return placeList[pos];
     }
 
+    public TYPETYPE.types GetPosType(int pos)
+    {
+        return placeList[pos].GetComponent<TYPETYPE>().getType();
+    }
+
     public int GetListLength()
     {
         return placeList.Count;
     }
 
+    public void setPos(int pos, GameObject obj = null)
+    {
+        placeList[pos] = obj;
+    }
+
+    public Vector3 getPosRotation(int pos)
+    {
+        if (placeList[pos] != null)
+        {
+            return placeList[pos].transform.eulerAngles;
+        }
+        else
+        {
+            return new Vector3(0, 0, 0);
+        }
+    }
 
 
     // ROTATION
@@ -74,13 +95,17 @@ public class Planet : MonoBehaviour
         // Calculate the correct distance for the Instantiated GameObject
         //float planetRadius = 0.4f;
 
-        float listAngle = Mathf.RoundToInt((angle  / 360) * GetListLength());
+        int listAngle = Mathf.RoundToInt((angle  / 360) * GetListLength());
+
+        
+        
         float desiredAngle = listAngle * (360 / GetListLength());
+
 
 
         // Add something as a child on the Planet's surface
         GameObject thingy = Instantiate(TEST_OBJECT, transform.position, Quaternion.identity) as GameObject;
-
+        thingy.transform.position = new Vector3(thingy.transform.position.x, thingy.transform.position.y, -1);
         // Turn the instantiated surface gameobject to the correct rotation
         thingy.transform.eulerAngles = new Vector3(0, 0, (desiredAngle - 90f + transform.localEulerAngles.z));
 
@@ -93,7 +118,62 @@ public class Planet : MonoBehaviour
         // Destroy the Meteorite object
         //Destroy(collider);
         collider.SetActive(false);
+
+        ReactToImpact(thingy, listAngle);
+
     }
+
+
+
+    private void ReactToImpact(GameObject thing, int pos)
+    {
+        while (pos < 0)
+        {
+            pos += GetListLength();
+            //Debug.Log(pos);
+        }
+
+        TYPETYPE.types _type = thing.GetComponent<TYPETYPE>().getType();
+
+        if (GetPos(pos) == null)
+        {
+            setPos(pos, thing);
+            return;
+        }
+
+
+
+        switch (GetPosType(pos))
+        {
+            case TYPETYPE.types.TREE:
+                switch (_type)
+                {
+                    case TYPETYPE.types.TREE:
+                        #region
+
+                        GetPos(pos).SetActive(false);
+                        thing.SetActive(false);
+                        setPos(pos, null);
+
+                        break;
+                        #endregion
+
+                    case TYPETYPE.types.LAVA:
+                        #region
+
+                        break;
+                        #endregion
+                }
+                break;
+            
+
+
+        }
+
+
+    }
+
+
 
 
     private void EXAMPLE(GameObject collider)   // FOR REFERENCE ONLY ATM
