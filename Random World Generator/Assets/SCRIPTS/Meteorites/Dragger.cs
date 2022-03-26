@@ -7,10 +7,12 @@ public class Dragger : MonoBehaviour
     Camera camera;
     Rigidbody2D rb;
 
+
     [Header("Distance")]
     float distance;
     [SerializeField] float minDistance = 0.2f;
     [SerializeField] float maxDistance = 4f;
+    Vector2 dragDirection;
 
     [Header("Force")]
     float force;
@@ -41,25 +43,48 @@ public class Dragger : MonoBehaviour
         return mousePos;
     }
 
+    private float GetDistance()
+    {
+        float dist = Vector2.Distance(transform.position, GetMousePos());
+        return dist;
+    }
+
     private void OnMouseDrag()
     {
-        //transform.position = GetMousePos() + _dragOffset;
 
         // Get Mouse Pos
         //Vector2 mousePos = GetMousePos();
 
         // Get the Direction
-        Vector2 dragDirection;
-        dragDirection = GetMousePos() - transform.position;
+        dragDirection = GetDragDirection();
 
         // Get Distance
-        float dist = Vector2.Distance(transform.position, GetMousePos());
+        float dist = GetDistance();
 
         // Add the Force into correct direction
         rb.AddForce(dragDirection * GetForceAmount(dist), ForceMode2D.Force);
 
-        //rb.AddForce(flyDirection * GetRandomSpeed(), ForceMode2D.Impulse);
+        Debug.Log("DRAGGING!");
     }
+
+    private Vector2 GetDragDirection()
+    {
+        Vector2 dir;
+        dir = GetMousePos() - transform.position;
+        return dir;
+    }
+
+
+    public void DragMeAround()
+    {
+        // Get Direction and Distance
+        dragDirection = GetDragDirection();
+        float dist = GetDistance();
+
+        // Add the Force
+        rb.AddForce(dragDirection * GetForceAmount(dist), ForceMode2D.Force);
+    }
+
 
     private float GetForceAmount(float dist)
     {
@@ -79,7 +104,7 @@ public class Dragger : MonoBehaviour
         else
         {
             // Calculate the force according to Distance
-            force = dist * 1.5f;
+            force = dist * 1.5f * Time.deltaTime;
             return force;
         }
     }
