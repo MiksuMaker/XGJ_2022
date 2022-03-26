@@ -77,9 +77,6 @@ public class Planet : MonoBehaviour
         float listAngle = Mathf.RoundToInt((angle  / 360) * GetListLength());
         float desiredAngle = listAngle * (360 / GetListLength());
 
-        //Debug.Log("DebugAngle: " + desiredAngle);
-
-
 
         // Add something as a child on the Planet's surface
         GameObject thingy = Instantiate(TEST_OBJECT, transform.position, Quaternion.identity) as GameObject;
