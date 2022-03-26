@@ -5,21 +5,27 @@ using UnityEngine;
 public class Planet : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 5f;
+
+    private float startingRot;
         
     [SerializeField] float planetRadius = 0.4f;
 
     [SerializeField] GameObject TEST_OBJECT;
 
     [Header("Placement List")]
-    [SerializeField] int placementAmount = 36;
-    [SerializeField] List<int> placeList = new List<int> ();
+    [SerializeField] int placementAmount = 6;
+    [SerializeField] List<GameObject> placeList = new List<GameObject> ();
 
 
     void Start()
     {
+
+        startingRot = transform.eulerAngles.z;
+
+
         for (int i = 0; i < placementAmount; i++)
         {
-            placeList.Add(0);
+            placeList.Add(null);
         }
     }
     void Update()
@@ -29,7 +35,7 @@ public class Planet : MonoBehaviour
 
     // LISTS
 
-    public int GetPos(int pos)
+    public GameObject GetPos(int pos)
     {
         return placeList[pos];
     }
@@ -63,25 +69,26 @@ public class Planet : MonoBehaviour
     private void DoCollisionEvent(GameObject collider)
     {
         // Calculate the angle between Planet and collider
-        float angle = Mathf.Atan2(collider.transform.position.y - transform.position.y, collider.transform.position.x - transform.position.x) * 180 / Mathf.PI;
+        float angle = Mathf.Atan2(collider.transform.position.y - transform.position.y, collider.transform.position.x - transform.position.x) * 180 / Mathf.PI - transform.localEulerAngles.z;
 
         // Calculate the correct distance for the Instantiated GameObject
         //float planetRadius = 0.4f;
 
-        float debugAngle = Mathf.RoundToInt((angle / 360) * GetListLength());
-        Debug.Log("DebugAngle: " + debugAngle);
+        float listAngle = Mathf.RoundToInt((angle  / 360) * GetListLength());
+        float desiredAngle = listAngle * (360 / GetListLength());
 
-        Vector2 desiredPos = transform.position;
-        desiredPos = Vector2.MoveTowards(transform.position, collider.transform.position, planetRadius);
+        //Debug.Log("DebugAngle: " + desiredAngle);
 
-        //Debug.Log("DesiredPos: " + desiredPos);
+
 
         // Add something as a child on the Planet's surface
-        //GameObject thingy = Instantiate(TEST_OBJECT, collider.transform.position, Quaternion.identity) as GameObject;
-        GameObject thingy = Instantiate(TEST_OBJECT, desiredPos, Quaternion.identity) as GameObject;
+        GameObject thingy = Instantiate(TEST_OBJECT, transform.position, Quaternion.identity) as GameObject;
 
         // Turn the instantiated surface gameobject to the correct rotation
-        thingy.transform.eulerAngles = new Vector3(0, 0, angle - 90);
+        thingy.transform.eulerAngles = new Vector3(0, 0, (desiredAngle - 90f + transform.localEulerAngles.z));
+
+        //Debug.Log("PLANET: " + transform.eulerAngles.z);
+        //Debug.Log("Thingy: " + thingy.transform.eulerAngles.z);
 
         // Make the Planet the Parent
         thingy.transform.parent = gameObject.transform;
@@ -91,7 +98,8 @@ public class Planet : MonoBehaviour
         collider.SetActive(false);
     }
 
-    private void EXAMPLE(GameObject collider)
+
+    private void EXAMPLE(GameObject collider)   // FOR REFERENCE ONLY ATM
     {
         // Calculate the angle between Planet and collider
         float angle = Mathf.Atan2(collider.transform.position.y - transform.position.y, collider.transform.position.x - transform.position.x) * 180 / Mathf.PI;
