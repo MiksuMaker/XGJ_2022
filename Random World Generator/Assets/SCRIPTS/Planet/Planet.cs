@@ -17,6 +17,13 @@ public class Planet : MonoBehaviour
     [SerializeField] List<GameObject> placeList = new List<GameObject> ();
 
 
+    
+
+    int AMOUNT_VEGE = 0;
+    int AMOUNT_LIHIS = 0;
+
+
+
     void Start()
     {
 
@@ -37,12 +44,25 @@ public class Planet : MonoBehaviour
 
     public GameObject GetPos(int pos)
     {
+        while (pos < 0)
+        {
+            pos += GetListLength();
+            //Debug.Log(pos);
+        }
         return placeList[pos];
     }
 
     public TYPETYPE.types GetPosType(int pos)
     {
-        return placeList[pos].GetComponent<TYPETYPE>().getType();
+        while (pos < 0)
+        {
+            pos += GetListLength();
+            //Debug.Log(pos);
+        }
+        if (GetPos(pos) != null){
+            return placeList[pos].GetComponent<TYPETYPE>().getType();
+        }
+        else { return TYPETYPE.types.NONE; }
     }
 
     public int GetListLength()
@@ -52,6 +72,11 @@ public class Planet : MonoBehaviour
 
     public void setPos(int pos, GameObject obj = null)
     {
+        while (pos < 0)
+        {
+            pos += GetListLength();
+            //Debug.Log(pos);
+        }
         placeList[pos] = obj;
     }
 
@@ -105,6 +130,8 @@ public class Planet : MonoBehaviour
 
         // Add something as a child on the Planet's surface
         GameObject thingy = Instantiate(TEST_OBJECT, transform.position, Quaternion.identity) as GameObject;
+
+
         thingy.transform.position = new Vector3(thingy.transform.position.x, thingy.transform.position.y, -1);
         // Turn the instantiated surface gameobject to the correct rotation
         thingy.transform.eulerAngles = new Vector3(0, 0, (desiredAngle - 90f + transform.localEulerAngles.z));
@@ -115,6 +142,10 @@ public class Planet : MonoBehaviour
         // Make the Planet the Parent
         thingy.transform.parent = gameObject.transform;
 
+
+        thingy.GetComponent<SPAWNABLE>().SetListPos(listAngle);
+        thingy.GetComponent<SPAWNABLE>().SetPlanet(this);
+
         // Destroy the Meteorite object
         //Destroy(collider);
         collider.SetActive(false);
@@ -123,6 +154,11 @@ public class Planet : MonoBehaviour
 
     }
 
+
+    public float GetEulerAngles()
+    {
+        return transform.localEulerAngles.z;
+    }
 
 
     private void ReactToImpact(GameObject thing, int pos)
@@ -202,8 +238,39 @@ public class Planet : MonoBehaviour
         // Make the Planet the Parent
         thingy.transform.parent = gameObject.transform;
 
+
         // Destroy the Meteorite object
         //Destroy(collider);
         collider.SetActive(false);
     }
+
+
+    public Vector3 GetRotation()
+    {
+        return transform.localEulerAngles;
+    }
+
+
+
+    public int GetAmount(TYPETYPE.types tyyppi)
+    {
+        switch (tyyppi)
+        {
+            default: return 0;
+            case TYPETYPE.types.LIHIS: return AMOUNT_LIHIS;
+            case TYPETYPE.types.VEGE: return AMOUNT_VEGE;
+        }
+    }
+
+    public void ModifyAmount(TYPETYPE.types tyyppi, int add)
+    {
+        switch (tyyppi)
+        {
+            case TYPETYPE.types.LIHIS: AMOUNT_LIHIS += add; break;
+            case TYPETYPE.types.VEGE: AMOUNT_VEGE += add; break;
+        }
+    }
+
+
+
 }
