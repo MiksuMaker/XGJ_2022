@@ -27,27 +27,10 @@ public class BEHAVIOUR_VEGE : SPAWNABLE
 
 
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //ListLen = 32;
-  
-        //float desiredAngle = curPos * (360 / ListLen);
-        //transform.eulerAngles = new Vector3(0, 0, (desiredAngle - 90f + planet.GetEulerAngles()));
-
-    }
-
-
-
-
     private void OnEnable()
     {
         beha = VEGE_BEHA.set_start_pos;
-        if (planet != null)
-        {
-            planet.ModifyAmount(TYPETYPE.types.VEGE, 1);
-        }
+ 
     }
 
     // Update is called once per frame

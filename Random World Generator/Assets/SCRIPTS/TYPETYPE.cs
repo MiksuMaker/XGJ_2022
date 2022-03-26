@@ -6,7 +6,9 @@ public class TYPETYPE : MonoBehaviour
 {
   public enum types
     {
-        TREE,LAVA,WATER,
+        TREE,LAVA,WATER,STEAM,CLOUD,GRASS,
+
+        LAND,
 
         VEGE,LIHIS,
 
