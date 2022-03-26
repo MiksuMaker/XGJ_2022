@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 917300601}
   - component: {fileID: 917300603}
   - component: {fileID: 917300602}
+  - component: {fileID: 917300604}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -466,6 +467,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
+--- !u!114 &917300604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917300600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 019ab2877a6679b43943abe98b8cb97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityRadius: 0.7
+  gravityStrength: 1
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &917659064
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,8 +853,8 @@ MonoBehaviour:
   targetMount: {fileID: 2022409992}
   throwerPoint: {fileID: 798794140}
   targetPoint: {fileID: 2093142148}
-  minRotation: 0
-  maxRotation: 10
+  minRotation: 1
+  maxRotation: 45
   minSpeed: 0.1
   maxSpeed: 0.5
   meteoriteSpawningOn: 1
