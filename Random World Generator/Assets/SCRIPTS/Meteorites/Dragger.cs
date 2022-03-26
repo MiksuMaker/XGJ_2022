@@ -16,8 +16,9 @@ public class Dragger : MonoBehaviour
 
     [Header("Force")]
     float force;
+    [SerializeField] float forceMultiplier = 5f;
     [SerializeField] float maxForce = 50f;
-    [SerializeField] float maxVelocity = 5f;
+    [SerializeField] float maxVelocity = 1f;
 
 
     private void Start()
@@ -29,8 +30,9 @@ public class Dragger : MonoBehaviour
     private void FixedUpdate()
     {
         // Clamp the Velocity
-        if (rb.velocity.magnitude < maxVelocity)
+        if (rb.velocity.magnitude > maxVelocity)
         {
+            Debug.Log("MAX velocity reached!");
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
         }
     }
@@ -101,6 +103,8 @@ public class Dragger : MonoBehaviour
 
         if (dist <= minDistance)
         {
+            //rb.velocity = Vector2.Lerp(new Vector2(0, 0), Vector2.zero, 2f);
+
             // No force
             force = 0f;
             return force;
@@ -114,7 +118,7 @@ public class Dragger : MonoBehaviour
         {
             // Calculate the force according to Distance
             //force = dist * 1.5f * Time.deltaTime;
-            force = dist * 1.5f;
+            force = dist * forceMultiplier * Time.deltaTime;
             return force;
         }
     }

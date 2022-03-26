@@ -196,5 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistance: 0.2
-  maxDistance: 4
-  maxForce: 50
+  maxDistance: 1
+  forceMultiplier: 100
+  maxForce: 5
+  maxVelocity: 1
