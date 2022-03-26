@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class ParticleMaker : MonoBehaviour
 {
-    [SerializeField] GameObject particle;
-    [SerializeField] float lifetime = 10f;
+    [SerializeField] GameObject[] particles;
+    [SerializeField] float maxLifetime = 5f;
 
-    public void MakeParticles()
+    public void MakeParticles(int whichNumber)
     {
-        GameObject _particle = Instantiate(particle, gameObject.transform) as GameObject;
-        Destroy(_particle, lifetime);
+        GameObject _particle = Instantiate(particles[whichNumber], gameObject.transform) as GameObject;
+        _particle.transform.parent = null;
+        Destroy(_particle, maxLifetime);
+    }
+
+    public void MakeParticlesAtAngle(int whichNumber, float angle)
+    {
+        GameObject _particle = Instantiate(particles[whichNumber], gameObject.transform) as GameObject;
+
+        // Rotate
+        //_particle.transform.eulerAngles = new Vector3(-90, 0, angle);
+        _particle.transform.eulerAngles = new Vector3((angle), -90, 90);
+        Debug.Log("True Angle: " + _particle.transform.eulerAngles.x);
+
+        Debug.Log("Given Angle: " + angle);
+
+        _particle.transform.parent = null;
+        Destroy(_particle, maxLifetime);
     }
 }

@@ -32,7 +32,6 @@ public class Dragger : MonoBehaviour
         // Clamp the Velocity
         if (rb.velocity.magnitude > maxVelocity)
         {
-            Debug.Log("MAX velocity reached!");
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
         }
     }
