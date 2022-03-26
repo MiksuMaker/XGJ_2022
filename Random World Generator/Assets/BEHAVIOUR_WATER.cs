@@ -35,7 +35,19 @@ public class BEHAVIOUR_WATER : SPAWNABLE
 
     }
 
-    
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("WW");
+
+        TYPETYPE other = collision.gameObject.GetComponent<TYPETYPE>();
+        if (other != null)
+        {
+            if (other.getType() == TYPETYPE.types.VEGE) { other.gameObject.GetComponent<BEHAVIOUR_VEGE>().Die(); }
+        }
+    }
 
 
 }
