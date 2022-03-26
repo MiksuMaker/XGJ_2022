@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872ae374e75df2744b0585848e6feb20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  this_type: 0
+  this_type: 2
 --- !u!114 &1434103471508423976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,6 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afc96a150835aa449ee646c3548bc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet: {fileID: 0}
+  ListPos: 0
 --- !u!1 &9064531365552929869
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class BEHAVIOUR_WATER : SPAWNABLE
     private void OnEnable()
     {
         StartCoroutine(SpawnFish(2f));
+        StartCoroutine(Dissapear(30f));
     }
 
     IEnumerator SpawnFish(float time)
@@ -35,6 +36,16 @@ public class BEHAVIOUR_WATER : SPAWNABLE
 
     }
 
+
+    IEnumerator Dissapear(float time)
+    {
+        yield return new WaitForSeconds(time);
+        planet.setPos(ListPos, null);
+        gameObject.SetActive(false);
+
+        
+
+    }
 
 
 

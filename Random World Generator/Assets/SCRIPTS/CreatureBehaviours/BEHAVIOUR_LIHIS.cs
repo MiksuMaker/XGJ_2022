@@ -30,18 +30,6 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //ListLen = 32;
-
-        //float desiredAngle = curPos * (360 / ListLen);
-        //transform.eulerAngles = new Vector3(0, 0, (desiredAngle - 90f + planet.GetEulerAngles()));
-
-    }
-
-
-
 
     private void OnEnable()
     {
@@ -111,7 +99,9 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
         TYPETYPE other = collision.gameObject.GetComponent<TYPETYPE>();
         if (other != null)
         {
-            if (other.getType() == TYPETYPE.types.VEGE) { other.gameObject.GetComponent<BEHAVIOUR_VEGE>().Die(); }
+            if (other.getType() == TYPETYPE.types.VEGE) {
+                Debug.Log("diedie");
+                other.gameObject.GetComponent<BEHAVIOUR_VEGE>().Die(); }
         }
     }
 

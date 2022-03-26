@@ -17,10 +17,18 @@ public class Planet : MonoBehaviour
     [SerializeField] List<GameObject> placeList = new List<GameObject> ();
 
 
-    
+
+    [Header("SPAWNABLES")]
+    [SerializeField] GameObject LAVA_;
+    [SerializeField] GameObject WATER_;
+    [SerializeField] GameObject LIHIS_;
+    [SerializeField] GameObject VEGE_;
+    [SerializeField] GameObject STEAM_;
+    [SerializeField] GameObject CLOUD_;
 
     int AMOUNT_VEGE = 0;
     int AMOUNT_LIHIS = 0;
+    int AMOUNT_CLOUD = 0;
 
 
 
@@ -49,9 +57,9 @@ public class Planet : MonoBehaviour
             pos += GetListLength();
             //Debug.Log(pos);
         }
-        if (pos > GetListLength())
+        if (pos >= GetListLength())
         {
-            pos -= (pos % (GetListLength() - 1));
+            pos -= (pos % (GetListLength()));
         }
         return placeList[pos];
     }
@@ -62,6 +70,10 @@ public class Planet : MonoBehaviour
         {
             pos += GetListLength();
             //Debug.Log(pos);
+        }
+        if (pos >= GetListLength())
+        {
+            pos = pos % GetListLength();
         }
         if (GetPos(pos) != null){
             return placeList[pos].GetComponent<TYPETYPE>().getType();
@@ -74,12 +86,16 @@ public class Planet : MonoBehaviour
         return placeList.Count;
     }
 
-    public void setPos(int pos, GameObject obj = null)
+    public void setPos(int pos, GameObject obj)
     {
         while (pos < 0)
         {
             pos += GetListLength();
             //Debug.Log(pos);
+        }
+        if (pos >= GetListLength())
+        {
+            pos = pos % GetListLength();
         }
         placeList[pos] = obj;
     }
@@ -116,6 +132,12 @@ public class Planet : MonoBehaviour
     }
 
 
+    public void OtherCollision(GameObject collider)
+    {
+        DoCollisionEvent(collider);
+    }
+
+
     private void DoCollisionEvent(GameObject collider)
     {
         // Calculate the angle between Planet and collider
@@ -126,35 +148,12 @@ public class Planet : MonoBehaviour
 
         int listAngle = Mathf.RoundToInt((angle  / 360) * GetListLength());
 
-        
-        
-        float desiredAngle = listAngle * (360 / GetListLength());
-
-
-
-        // Add something as a child on the Planet's surface
-        GameObject thingy = Instantiate(TEST_OBJECT, transform.position, Quaternion.identity) as GameObject;
-
-
-        thingy.transform.position = new Vector3(thingy.transform.position.x, thingy.transform.position.y, -1);
-        // Turn the instantiated surface gameobject to the correct rotation
-        thingy.transform.eulerAngles = new Vector3(0, 0, (desiredAngle - 90f + transform.localEulerAngles.z));
-
-        //Debug.Log("PLANET: " + transform.eulerAngles.z);
-        //Debug.Log("Thingy: " + thingy.transform.eulerAngles.z);
-
-        // Make the Planet the Parent
-        thingy.transform.parent = gameObject.transform;
-
-
-        thingy.GetComponent<SPAWNABLE>().SetListPos(listAngle);
-        thingy.GetComponent<SPAWNABLE>().SetPlanet(this);
+  
 
         // Destroy the Meteorite object
         //Destroy(collider);
-        collider.SetActive(false);
-
-        ReactToImpact(thingy, listAngle);
+        
+        ReactToImpact(collider, listAngle);
 
     }
 
@@ -167,32 +166,47 @@ public class Planet : MonoBehaviour
 
     private void ReactToImpact(GameObject thing, int pos)
     {
+        GameObject _obj;
+
         while (pos < 0)
         {
             pos += GetListLength();
-            //Debug.Log(pos);
         }
 
         TYPETYPE.types _type = thing.GetComponent<TYPETYPE>().getType();
+      
+        thing.SetActive(false);
 
         if (GetPos(pos) == null)
         {
-            setPos(pos, thing);
+            _obj = InstantiateImpactObject(_type, pos);
+            setPos(pos, _obj);
+
+            Debug.Log(GetPos(pos));
             return;
         }
 
+        Debug.Log(GetPosType(pos));
 
 
         switch (GetPosType(pos))
         {
+
+            //-------------------------------------------------------------------------------
             case TYPETYPE.types.TREE:
                 switch (_type)
                 {
+                    default:
+                        #region
+                        _obj = InstantiateImpactObject(_type, pos);
+                        setPos(pos, _obj);
+                        #endregion
+                        break;
+
                     case TYPETYPE.types.TREE:
                         #region
 
                         GetPos(pos).SetActive(false);
-                        thing.SetActive(false);
                         setPos(pos, null);
 
                         break;
@@ -205,14 +219,143 @@ public class Planet : MonoBehaviour
                         #endregion
                 }
                 break;
-            
+            //-------------------------------------------------------------------------------
+            case TYPETYPE.types.WATER:
 
+
+                switch (_type)
+                {
+
+                    case TYPETYPE.types.GRASS:
+                        break;
+
+                    default:
+                        #region
+                        _obj = InstantiateImpactObject(TYPETYPE.types.WATER, pos);
+                        setPos(pos, _obj);
+                        #endregion
+                        break;
+
+                    case TYPETYPE.types.LAVA:
+                        #region
+
+                        _obj = InstantiateImpactObject(TYPETYPE.types.STEAM, pos);
+                        GetPos(pos).SetActive(false);
+                        setPos(pos, null);
+                        //Debug.Log("LAVA-WATER");
+                        #endregion
+                        break;
+                }
+                break;
+            //-------------------------------------------------------------------------------
+            case TYPETYPE.types.LAVA:
+                switch (_type)
+                {
+
+                    default:
+                        #region
+                        _obj = InstantiateImpactObject(TYPETYPE.types.LAVA, pos);
+                        setPos(pos, _obj);
+                        #endregion
+                        break;
+
+                    case TYPETYPE.types.WATER:
+                        #region
+                       
+                        _obj = InstantiateImpactObject(TYPETYPE.types.STEAM, pos);
+                        GetPos(pos).SetActive(false);
+                        setPos(pos, null);
+                        //Debug.Log("LAVA-WATER");
+                        #endregion
+                        break;
+                }
+                break;
+            //-------------------------------------------------------------------------------
+            case TYPETYPE.types.GRASS:
+                switch (_type)
+                {
+                    default: break;
+
+                }
+                break;
+            //-------------------------------------------------------------------------------
+            case TYPETYPE.types.LAND:
+                switch (_type)
+                {
+                    case TYPETYPE.types.WATER:
+                    case TYPETYPE.types.LAVA:
+                        _obj = InstantiateImpactObject(TYPETYPE.types.STEAM, pos);
+                        GetPos(pos).SetActive(false);
+                        setPos(pos, null);
+                        break;
+
+                }
+                break;
+
+            //-------------------------------------------------------------------------------
+            case TYPETYPE.types.CLOUD:
+                switch (_type)
+                {
+                    default: break;
+
+                }
+                break;
+        }
+
+        return;
+    }
+
+
+
+
+
+    public GameObject InstantiateImpactObject(TYPETYPE.types tyyppi, int pos)
+    {
+        GameObject temp = null;
+        GameObject thingy = null;
+        switch (tyyppi)
+        {
+            case TYPETYPE.types.WATER: temp = WATER_; thingy = ObjectPool.SharedInstance.GetPooled_WATER(); break;
+            case TYPETYPE.types.LAVA: temp = LAVA_; thingy = ObjectPool.SharedInstance.GetPooled_LAVA(); break;
+            case TYPETYPE.types.LIHIS: temp = LIHIS_; thingy = ObjectPool.SharedInstance.GetPooled_LIHIS(); break;
+            case TYPETYPE.types.VEGE: temp = VEGE_; thingy = ObjectPool.SharedInstance.GetPooled_VEGE(); break;
+            case TYPETYPE.types.STEAM: temp = STEAM_; thingy = ObjectPool.SharedInstance.GetPooled_STEAM(); break;
+            case TYPETYPE.types.CLOUD: temp = CLOUD_; thingy = ObjectPool.SharedInstance.GetPooled_CLOUD(); break;
+            case TYPETYPE.types.GRASS: temp = CLOUD_; thingy = ObjectPool.SharedInstance.GetPooled_GRASS(); break;
+        }
+
+        if (temp != null && thingy != null)
+        {
+
+            //Debug.Log(tyyppi);
+            float desiredAngle = pos * (360 / GetListLength());
+
+            // Add something as a child on the Planet's surface
+            //GameObject thingy = Instantiate(temp, transform.position, Quaternion.identity) as GameObject;
+
+
+            thingy.transform.position = new Vector3(thingy.transform.position.x, thingy.transform.position.y, -1);
+            // Turn the instantiated surface gameobject to the correct rotation
+            thingy.transform.eulerAngles = new Vector3(0, 0, (desiredAngle - 90f + transform.localEulerAngles.z));
+
+            //Debug.Log("PLANET: " + transform.eulerAngles.z);
+            //Debug.Log("Thingy: " + thingy.transform.eulerAngles.z);
+
+            // Make the Planet the Parent
+            thingy.transform.parent = gameObject.transform;
+
+
+            thingy.SetActive(true);
+
+            thingy.GetComponent<SPAWNABLE>().SetListPos(pos);
+            thingy.GetComponent<SPAWNABLE>().SetPlanet(this);
+
+            return thingy;
 
         }
 
-
+        return null;
     }
-
 
 
 
@@ -263,6 +406,7 @@ public class Planet : MonoBehaviour
             default: return 0;
             case TYPETYPE.types.LIHIS: return AMOUNT_LIHIS;
             case TYPETYPE.types.VEGE: return AMOUNT_VEGE;
+            case TYPETYPE.types.CLOUD: return AMOUNT_CLOUD;
         }
     }
 
@@ -272,6 +416,7 @@ public class Planet : MonoBehaviour
         {
             case TYPETYPE.types.LIHIS: AMOUNT_LIHIS += add; break;
             case TYPETYPE.types.VEGE: AMOUNT_VEGE += add; break;
+            case TYPETYPE.types.CLOUD: AMOUNT_CLOUD += add; break;
         }
     }
 
