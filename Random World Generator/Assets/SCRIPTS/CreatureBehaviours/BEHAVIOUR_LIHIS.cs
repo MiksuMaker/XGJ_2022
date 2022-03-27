@@ -119,6 +119,10 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
             if (collision.gameObject.GetComponent<BEHAVIOUR_VEGE>())
             {
+
+
+                AudioManager.AUMA.playSound(AudioManager.AUMA.soEAT);
+
                 StopCoroutine(Hungerco);
                 Hungerco = StartCoroutine(DieOfHunger(15f));
 

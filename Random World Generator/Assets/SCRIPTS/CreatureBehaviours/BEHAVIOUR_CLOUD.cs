@@ -71,7 +71,7 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
 
 
                 SetPosition(curPos);
-                curPos = Mathf.MoveTowards(curPos, gotoPos, .01f);
+                curPos = Mathf.MoveTowards(curPos, gotoPos, 1f*Time.deltaTime);
                 if (curPos == gotoPos) { beha = CLOUD_BEHA.stop; StartCoroutine(WaitAndSwitch(2f, CLOUD_BEHA.get_wander_pos)); }
 
                 break;
@@ -104,7 +104,9 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
 
             if (rain.activeSelf == false)
             {
-                rain.SetActive(true);
+
+            AudioManager.AUMA.playSound(AudioManager.AUMA.soRAIN);
+            rain.SetActive(true);
             }
         
     }

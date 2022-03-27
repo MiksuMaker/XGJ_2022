@@ -34,6 +34,9 @@ public class BEHAVIOUR_LAVA : SPAWNABLE
         if (planet.GetAmount(TYPETYPE.types.LIHIS) < 5)
         {
 
+
+            AudioManager.AUMA.playSound(AudioManager.AUMA.soLihisSpawn);
+
             GameObject vege = ObjectPool.SharedInstance.GetPooled_LIHIS();
 
             planet.ModifyAmount(TYPETYPE.types.LIHIS, 1);

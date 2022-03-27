@@ -145,6 +145,10 @@ public class Planet : MonoBehaviour
 
     private void DoCollisionEvent(GameObject collider)
     {
+
+
+        AudioManager.AUMA.playSound(AudioManager.AUMA.soMETEORITE);
+
         // Calculate the angle between Planet and collider
         float angle = Mathf.Atan2(collider.transform.position.y - transform.position.y, collider.transform.position.x - transform.position.x) * 180 / Mathf.PI - transform.localEulerAngles.z;
 

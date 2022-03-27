@@ -38,6 +38,8 @@ public class BEHAVIOUR_STEAM : SPAWNABLE
         switch (beha)
         {
             case STEAM_BEHA.set_start_pos:
+
+                AudioManager.AUMA.playSound(AudioManager.AUMA.soSTEAM);
                 curPos = ListPos;
                 gotoPos = (int)curPos;
                 beha = STEAM_BEHA.fly;
@@ -57,6 +59,8 @@ public class BEHAVIOUR_STEAM : SPAWNABLE
             case STEAM_BEHA.cloud:
                 if (planet.GetAmount(TYPETYPE.types.CLOUD) < 4)
                 {
+
+                    AudioManager.AUMA.playSound(AudioManager.AUMA.soPILVI);
                     planet.ModifyAmount(TYPETYPE.types.CLOUD, 1);
                     planet.InstantiateImpactObject(TYPETYPE.types.CLOUD, ListPos);
                 }

@@ -73,9 +73,12 @@ public class BEHAVIOUR_GRASS : SPAWNABLE
         switch (level)
         {
             case 1:
+
+                AudioManager.AUMA.playSound(AudioManager.AUMA.soSound3);
                 spr.sprite = level2;
                 break;
             case 2:
+                AudioManager.AUMA.playSound(AudioManager.AUMA.soSound3);
                 spr.sprite = level3;
                 break;
 

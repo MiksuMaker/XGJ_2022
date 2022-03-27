@@ -8,6 +8,9 @@ public class MeteorVFX : MonoBehaviour
     
     float waitingPeriod = 1f;
 
+    float soundDelay = .1f;
+    bool canPlaySound = true;
+
     private void Start()
     {
         particle = GetComponent<ParticleMaker>();
@@ -31,6 +34,17 @@ public class MeteorVFX : MonoBehaviour
         }
     }
 
+
+
+
+    private IEnumerator CanPlaySoundAgain(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canPlaySound = true;
+
+    }
+   
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check whether the collision was with another Meteorite
@@ -42,6 +56,13 @@ public class MeteorVFX : MonoBehaviour
             particle.MakeParticles(1);
 
             // MAKE A SOUND ------------------------------------------------------------------------- HERE
+            if (canPlaySound) {
+                
+                    AudioManager.AUMA.playSound(AudioManager.AUMA.soSound1);
+                canPlaySound = false;
+                StartCoroutine(CanPlaySoundAgain(soundDelay));
+
+                }
         }
         else if (collision.gameObject.GetComponent<Planet>())
         {
@@ -49,6 +70,7 @@ public class MeteorVFX : MonoBehaviour
             float angle = Mathf.Atan2(collision.transform.position.y - transform.position.y, collision.transform.position.x - transform.position.x) * 180 / Mathf.PI;
             // Instantiate impact
             particle.MakeParticlesAtAngle(2, angle);
+
         }
     }
 

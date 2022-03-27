@@ -25,6 +25,9 @@ public class BEHAVIOUR_WATER : SPAWNABLE
         if (planet.GetAmount(TYPETYPE.types.VEGE) < 5)
         {
 
+
+            AudioManager.AUMA.playSound(AudioManager.AUMA.soKalaSpawn);
+
             planet.ModifyAmount(TYPETYPE.types.VEGE, 1);
             GameObject vege = ObjectPool.SharedInstance.GetPooled_VEGE();
 
@@ -48,6 +51,8 @@ public class BEHAVIOUR_WATER : SPAWNABLE
     IEnumerator SpawnGrass(float time)
     {
         yield return new WaitForSeconds(time);
+
+
 
         grassSpawn.SetActive(true);
 
