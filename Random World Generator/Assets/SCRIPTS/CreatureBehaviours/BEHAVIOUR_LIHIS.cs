@@ -114,12 +114,16 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.GetComponent<BEHAVIOUR_VEGE>())
+        if (gameObject.activeSelf)
         {
+
+            if (collision.gameObject.GetComponent<BEHAVIOUR_VEGE>())
+            {
                 StopCoroutine(Hungerco);
                 Hungerco = StartCoroutine(DieOfHunger(15f));
-                
-                collision.gameObject.GetComponent<BEHAVIOUR_VEGE>().Die(); 
+
+                collision.gameObject.GetComponent<BEHAVIOUR_VEGE>().Die();
+            }
         }
     }
 
