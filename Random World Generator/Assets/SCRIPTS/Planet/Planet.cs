@@ -190,11 +190,11 @@ public class Planet : MonoBehaviour
             _obj = InstantiateImpactObject(_type, pos);
             setPos(pos, _obj);
 
-            Debug.Log(GetPos(pos));
+            //Debug.Log(GetPos(pos));
             return;
         }
 
-        Debug.Log(GetPosType(pos));
+        //Debug.Log(GetPosType(pos));
 
 
         switch (GetPosType(pos))
@@ -235,14 +235,14 @@ public class Planet : MonoBehaviour
                 switch (_type)
                 {
 
-                    case TYPETYPE.types.GRASS:
-                        break;
+                    case TYPETYPE.types.GRASS: break;
 
                     default:
                         #region
                         _obj = InstantiateImpactObject(TYPETYPE.types.WATER, pos);
                         GetPos(pos).SetActive(false);
                         setPos(pos, _obj);
+                        
                         #endregion
                         break;
 
@@ -262,11 +262,14 @@ public class Planet : MonoBehaviour
                 switch (_type)
                 {
 
+                    case TYPETYPE.types.GRASS: break;
+
                     default:
                         #region
                         _obj = InstantiateImpactObject(TYPETYPE.types.LAVA, pos);
                         GetPos(pos).SetActive(false);
                         setPos(pos, _obj);
+                        
                         #endregion
                         break;
 
@@ -285,7 +288,16 @@ public class Planet : MonoBehaviour
             case TYPETYPE.types.GRASS:
                 switch (_type)
                 {
-                    default: break;
+
+
+                    case TYPETYPE.types.GRASS: break;
+
+                    case TYPETYPE.types.FIRE: break;
+
+                    default:
+                        GetPos(pos).SetActive(false);
+                        setPos(pos, null);
+                        break;
 
                 }
                 break;

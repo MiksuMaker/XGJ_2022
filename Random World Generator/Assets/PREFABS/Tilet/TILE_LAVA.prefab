@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2106275137852793265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1692221244272656718}
+  - component: {fileID: 672276750793229447}
+  m_Layer: 9
+  m_Name: FireObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1692221244272656718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106275137852793265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8409939241509755513}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &672276750793229447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106275137852793265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872ae374e75df2744b0585848e6feb20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  this_type: 8
 --- !u!1 &3589218247601545542
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +55,7 @@ GameObject:
   - component: {fileID: 8409939241509755513}
   - component: {fileID: 8038824958266062150}
   - component: {fileID: -8015036109579872560}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TILE_LAVA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,6 +74,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5077826983194766154}
+  - {fileID: 1692221244272656718}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planet: {fileID: 0}
   ListPos: 0
+  fireObj: {fileID: 2106275137852793265}
 --- !u!1 &5077826983194766155
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5077826983194766154}
   - component: {fileID: 5077826983194766153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sprite_Lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}

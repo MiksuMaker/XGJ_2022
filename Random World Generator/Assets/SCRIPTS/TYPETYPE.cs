@@ -8,9 +8,11 @@ public class TYPETYPE : MonoBehaviour
     {
         TREE,LAVA,WATER,STEAM,CLOUD,GRASS,
 
-        LAND, RAIN,
+        LAND, RAIN, FIRE,
 
         VEGE,LIHIS,
+
+        DEATHZONE,
 
         NONE
 

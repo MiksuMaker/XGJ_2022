@@ -4,11 +4,26 @@ using UnityEngine;
 
 public class BEHAVIOUR_LAVA : SPAWNABLE
 {
+
+
+    [SerializeField] GameObject fireObj;
+
+    int[] pose = new int[4];
+
+
+    private void Start()
+    {
+        pose[0] = -2;
+        pose[1] = -1;
+        pose[2] = 1;
+        pose[3] = 2;
+    }
     private void OnEnable()
     {
         StopAllCoroutines();
         StartCoroutine(SpawnLihis(7f));
-        StartCoroutine(Dissapear(20f));
+        StartCoroutine(SpawnFire(4f));
+        StartCoroutine(Dissapear(15f));
     }
 
     IEnumerator SpawnLihis(float time)
@@ -38,6 +53,27 @@ public class BEHAVIOUR_LAVA : SPAWNABLE
         StartCoroutine(SpawnLihis(10f));
 
     }
+
+
+
+    IEnumerator SpawnFire(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+
+        int curPos = pose[Random.Range(0, 4)];
+
+        if (planet.GetPosType(curPos) == TYPETYPE.types.GRASS)
+        {
+            planet.GetPos(curPos).GetComponent<BEHAVIOUR_GRASS>().setOnFire();
+        }
+
+        
+
+        StartCoroutine(SpawnFire(4f));
+
+    }
+
 
 
     IEnumerator Dissapear(float time)

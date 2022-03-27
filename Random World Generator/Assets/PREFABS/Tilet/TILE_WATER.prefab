@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5694138526532242815}
   - component: {fileID: 6069756401891320384}
   - component: {fileID: 7696598111788496904}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TILE_WATER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1431736197457868658}
   - component: {fileID: 1912767920941922479}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: grassSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9064531365552929868}
   - component: {fileID: 9064531365552929871}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sprite_Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}

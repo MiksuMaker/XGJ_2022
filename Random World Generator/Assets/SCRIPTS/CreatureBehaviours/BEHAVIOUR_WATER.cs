@@ -13,8 +13,8 @@ public class BEHAVIOUR_WATER : SPAWNABLE
 
         StopAllCoroutines();
         StartCoroutine(SpawnFish(7f));
-        StartCoroutine(SpawnGrass(3f));
-        StartCoroutine(Dissapear(20f));
+        StartCoroutine(SpawnGrass(2f));
+        StartCoroutine(Dissapear(15f));
     }
 
     IEnumerator SpawnFish(float time)
@@ -51,16 +51,18 @@ public class BEHAVIOUR_WATER : SPAWNABLE
 
         grassSpawn.SetActive(true);
 
-        int[] choose = new int[2];
-        choose[0] = -1;
-        choose[1] = 1;
+        int[] choose = new int[4];
+        choose[0] = -2;
+        choose[1] = -1;
+        choose[2] = 1;
+        choose[3] = 2;
 
 
 
-       planet.OtherOtherCollision(grassSpawn, ListPos + choose[(int)Random.Range(0,2)]);
+        planet.OtherOtherCollision(grassSpawn, ListPos + choose[(int)Random.Range(0,4)]);
 
 
-        StartCoroutine(SpawnFish(7f));
+        StartCoroutine(SpawnFish(2f));
 
     }
 
@@ -70,8 +72,6 @@ public class BEHAVIOUR_WATER : SPAWNABLE
         yield return new WaitForSeconds(time);
         planet.setPos(ListPos, null);
         gameObject.SetActive(false);
-
-        
 
     }
 

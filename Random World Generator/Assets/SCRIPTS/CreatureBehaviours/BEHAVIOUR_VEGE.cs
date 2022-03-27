@@ -29,6 +29,8 @@ public class BEHAVIOUR_VEGE : SPAWNABLE
 
     private void OnEnable()
     {
+
+        StopAllCoroutines();
         beha = VEGE_BEHA.set_start_pos;
  
     }
@@ -58,7 +60,7 @@ public class BEHAVIOUR_VEGE : SPAWNABLE
 
 
                 SetPosition(curPos);
-                curPos = Mathf.MoveTowards(curPos, gotoPos, .01f);
+                curPos = Mathf.MoveTowards(curPos, gotoPos, 1f * Time.deltaTime);
                 if (curPos == gotoPos) { beha = VEGE_BEHA.stop; StartCoroutine(WaitAndSwitch(2f, VEGE_BEHA.get_wander_pos)); }
 
                 break;
@@ -85,9 +87,19 @@ public class BEHAVIOUR_VEGE : SPAWNABLE
 
 
 
-   
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
-    public void Die()
+        if (collision.gameObject.GetComponent<BEHAVIOUR_METEOR>())
+        {
+            Die();
+        }
+
+    }
+
+
+
+    public override void Die()
     {
         planet.ModifyAmount(TYPETYPE.types.VEGE, -1);
         gameObject.SetActive(false);

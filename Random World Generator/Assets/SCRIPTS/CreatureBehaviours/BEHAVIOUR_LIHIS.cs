@@ -30,6 +30,8 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
     private void OnEnable()
     {
+
+        StopAllCoroutines();
         beha = VEGE_BEHA.set_start_pos;
 
         Hungerco = StartCoroutine(DieOfHunger(15f));
@@ -61,7 +63,7 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
 
                 SetPosition(curPos);
-                curPos = Mathf.MoveTowards(curPos, gotoPos, .01f);
+                curPos = Mathf.MoveTowards(curPos, gotoPos, 1f * Time.deltaTime);
                 if (curPos == gotoPos) { beha = VEGE_BEHA.stop; StartCoroutine(WaitAndSwitch(2f, VEGE_BEHA.get_wander_pos)); }
 
                 break;
@@ -131,7 +133,7 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
 
 
-    public void Die()
+    public override void Die()
     {
         planet.ModifyAmount(TYPETYPE.types.LIHIS, -1);
         gameObject.SetActive(false);

@@ -35,6 +35,8 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
 
     private void OnEnable()
     {
+
+        StopAllCoroutines();
         beha = CLOUD_BEHA.set_start_pos;
         rain.SetActive(false);
         StartCoroutine(Dissapear(20f));

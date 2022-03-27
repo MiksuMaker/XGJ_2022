@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7532768530806409254}
   - component: {fileID: 8336297645362751257}
   - component: {fileID: -2242255852842794350}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TILE_STEAM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +58,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6a74f10237c794582d5466f2065c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet: {fileID: 0}
+  ListPos: 0
+  curPos: 0
+  gotoPos: 0
+  movePos: 0
 --- !u!1 &6505395252705900820
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6505395252705900821}
   - component: {fileID: 6505395252705900822}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sprite_Steam
   m_TagString: Untagged
   m_Icon: {fileID: 0}

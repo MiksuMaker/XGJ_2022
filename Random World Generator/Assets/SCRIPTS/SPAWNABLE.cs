@@ -33,4 +33,11 @@ public class SPAWNABLE : MonoBehaviour
         return new Vector3(0, 0, (desiredAngle - 90f + this.planet.GetEulerAngles()));
     }
 
+    public virtual void Die()
+    {
+      
+
+    }
+
+
 }

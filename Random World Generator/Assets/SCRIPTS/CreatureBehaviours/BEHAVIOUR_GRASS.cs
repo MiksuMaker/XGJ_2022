@@ -14,9 +14,15 @@ public class BEHAVIOUR_GRASS : SPAWNABLE
 
     int level = 0;
 
+
+    [SerializeField] bool onFire;
+    [SerializeField] GameObject fireObj;
+
     private void OnEnable()
     {
-     
+        StopAllCoroutines();
+        onFire = false;
+        fireObj.SetActive(false);
         level = 0;
         countdown = 0f;
         setLevel(0);
@@ -26,9 +32,20 @@ public class BEHAVIOUR_GRASS : SPAWNABLE
 
     private void Update()
     {
-        countdown = Mathf.MoveTowards(countdown, 0, 1f * Time.deltaTime);
+        countdown = Mathf.MoveTowards(countdown, 0, 10f * Time.deltaTime);
     }
 
+
+
+    public void setOnFire() { 
+    if (onFire) { return; }
+
+        onFire = true;
+        fireObj.SetActive(true);
+        StartCoroutine(Dissapear(3f));
+
+    
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -84,14 +101,18 @@ public class BEHAVIOUR_GRASS : SPAWNABLE
         }
     }
 
+    public int getLevel()
+    {
+        return level;
+    }
+
+
 
     IEnumerator Dissapear(float time)
     {
         yield return new WaitForSeconds(time);
         planet.setPos(ListPos, null);
         gameObject.SetActive(false);
-
-
 
     }
 

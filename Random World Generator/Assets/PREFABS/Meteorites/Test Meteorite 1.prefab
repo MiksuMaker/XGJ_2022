@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDistance: 0.2
   maxDistance: 1
+  forceMultiplier: 5
   maxForce: 5
   maxVelocity: 1
 --- !u!114 &6660830171088281374
@@ -141,6 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7152761572973733176}
   - component: {fileID: 4166839348526942227}
+  - component: {fileID: 5448889357257944766}
   m_Layer: 7
   m_Name: Meteorite Graphics
   m_TagString: Untagged
@@ -213,3 +215,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5448889357257944766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2613039465020879616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d16b535a6bee6514485df5da570861b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

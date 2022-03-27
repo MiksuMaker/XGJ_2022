@@ -7,6 +7,8 @@ public class BEHAVIOUR_KALLO : SPAWNABLE
 
     private void OnEnable()
     {
+
+        StopAllCoroutines();
         StartCoroutine(Dissapear(15f));
     }
 
