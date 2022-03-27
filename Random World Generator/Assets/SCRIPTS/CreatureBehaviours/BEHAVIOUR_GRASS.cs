@@ -18,6 +18,9 @@ public class BEHAVIOUR_GRASS : SPAWNABLE
     [SerializeField] bool onFire;
     [SerializeField] GameObject fireObj;
 
+    // PArticles
+    [SerializeField] ParticleMaker particle;
+
     private void OnEnable()
     {
         StopAllCoroutines();
@@ -115,8 +118,19 @@ public class BEHAVIOUR_GRASS : SPAWNABLE
     {
         yield return new WaitForSeconds(time);
         planet.setPos(ListPos, null);
+
+        
+
         gameObject.SetActive(false);
 
+    }
+
+    public void ExplodeOnContact()
+    {
+        // Particles
+        Debug.Log("Grass-splosion activated!");
+        //particle.MakeParticles(0);
+        particle.MakeParticlesAtAngle(0, particle.GetAngle(particle.gameObject, planet.gameObject));
     }
 
 }

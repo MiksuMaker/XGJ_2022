@@ -74,7 +74,7 @@ public class MeteoriteManager : MonoBehaviour
                 {
                     canSwitchState = false;
                     StartCoroutine(MeteoriteThrower());
-                    showerSpeed = showerSpeedMin;
+                    //showerSpeed = showerSpeedMin;
                     SpawnState++;
                     StartCoroutine(SwitchStateOnDelay(7f));
                 }
@@ -82,12 +82,14 @@ public class MeteoriteManager : MonoBehaviour
             case 2:
                 if (canSwitchState)
                 {
-                    showerSpeed = showerSpeedMax + Mathf.Abs(Mathf.Sin(cyclePos )) * (showerSpeedMin - showerSpeedMax);
-                    cyclePos += showerCycleSpeed * Time.deltaTime;
-                    if (cyclePos > (2 * Mathf.PI))
-                    {
-                        cyclePos -= (2 * Mathf.PI);
-                    }
+                    // Changes speed cyclically
+
+                    //showerSpeed = showerSpeedMax + Mathf.Abs(Mathf.Sin(cyclePos )) * (showerSpeedMin - showerSpeedMax);
+                    //cyclePos += showerCycleSpeed * Time.deltaTime;
+                    //if (cyclePos > (2 * Mathf.PI))
+                    //{
+                    //    cyclePos -= (2 * Mathf.PI);
+                    //}
                 }
                 break;
 

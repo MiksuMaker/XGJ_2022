@@ -299,6 +299,8 @@ public class Planet : MonoBehaviour
                     case TYPETYPE.types.FIRE: break;
 
                     default:
+                        Debug.Log("Initiate Grass Explosion");
+                        GetPos(pos).GetComponent<BEHAVIOUR_GRASS>().ExplodeOnContact();
                         GetPos(pos).SetActive(false);
                         setPos(pos, null);
                         break;
@@ -310,6 +312,8 @@ public class Planet : MonoBehaviour
                         }
                         else
                         {
+                            Debug.Log("Initiate Grass Explosion");
+                            GetPos(pos).GetComponent<BEHAVIOUR_GRASS>().ExplodeOnContact();
                             GetPos(pos).SetActive(false);
                             setPos(pos, null);
                         }
