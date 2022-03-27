@@ -9,7 +9,7 @@ public class BEHAVIOUR_KALLO : SPAWNABLE
     {
 
         StopAllCoroutines();
-        StartCoroutine(Dissapear(15f));
+        StartCoroutine(Dissapear(5f));
     }
 
     IEnumerator Dissapear(float time)

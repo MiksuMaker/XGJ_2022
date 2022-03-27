@@ -134,7 +134,20 @@ public class MeteoriteManager : MonoBehaviour
         // Create the Meteorite
 
         //GameObject meteorite = Instantiate(meteorites[Random.Range(0, meteorites.Length)], throwerPoint.transform.position, Quaternion.identity) as GameObject;
-        GameObject meteorite = ObjectPool.SharedInstance.GetPooled_METEORITE();
+
+
+        GameObject meteorite;
+
+        if (Random.Range(0,4) > 1)
+        {
+            meteorite = ObjectPool.SharedInstance.GetPooled_METEORITE();
+        }
+        else
+        {
+            meteorite = ObjectPool.SharedInstance.GetPooled_METEORITE_FIRE();
+        }
+        
+        
 
         //now using pooler
         if (meteorite != null)

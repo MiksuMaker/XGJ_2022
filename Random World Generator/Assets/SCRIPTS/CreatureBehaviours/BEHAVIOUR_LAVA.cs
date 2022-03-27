@@ -22,7 +22,7 @@ public class BEHAVIOUR_LAVA : SPAWNABLE
     {
         StopAllCoroutines();
         StartCoroutine(SpawnLihis(7f));
-        StartCoroutine(SpawnFire(4f));
+        StartCoroutine(SpawnFire(2f));
         StartCoroutine(Dissapear(15f));
     }
 
@@ -70,7 +70,7 @@ public class BEHAVIOUR_LAVA : SPAWNABLE
 
         
 
-        StartCoroutine(SpawnFire(4f));
+        StartCoroutine(SpawnFire(2f));
 
     }
 

@@ -299,6 +299,19 @@ public class Planet : MonoBehaviour
                         setPos(pos, null);
                         break;
 
+                    case TYPETYPE.types.WATER:
+                        if (GetPos(pos).GetComponent<BEHAVIOUR_GRASS>().getLevel() == 0)
+                        {
+                            GetPos(pos).GetComponent<BEHAVIOUR_GRASS>().LevelUp();
+                        }
+                        else
+                        {
+                            GetPos(pos).SetActive(false);
+                            setPos(pos, null);
+                        }
+
+                        break;
+
                 }
                 break;
             //-------------------------------------------------------------------------------

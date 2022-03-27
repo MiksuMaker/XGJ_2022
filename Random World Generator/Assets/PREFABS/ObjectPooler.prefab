@@ -46,7 +46,10 @@ MonoBehaviour:
   planet: {fileID: 0}
   pooledList_METEORITE: []
   objectToPool_METEORITE: {fileID: 4984859502223108073, guid: a7dc0a04484ec2f40a6a828ad4bbf808, type: 3}
-  amountToPool_METEORITE: 60
+  amountToPool_METEORITE: 24
+  pooledList_METEORITE_FIRE: []
+  objectToPool_METEORITE_FIRE: {fileID: 6811327990501085150, guid: 99194ad6fd07bfb45a66b8c963da0428, type: 3}
+  amountToPool_METEORITE_FIRE: 24
   pooledList_VEGE: []
   objectToPool_VEGE: {fileID: 3766584303183800009, guid: fbc52119c07a40442ad3a3d8bc5462ac, type: 3}
   amountToPool_VEGE: 24

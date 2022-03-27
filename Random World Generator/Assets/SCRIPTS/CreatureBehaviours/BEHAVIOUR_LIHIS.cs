@@ -24,9 +24,20 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
     [SerializeField] BEHAVIOUR_VEGE kohde;
 
+    [SerializeField] Sprite deadSprite;
+
+    Transform tr;
+
     private int ListLen;
 
     Coroutine Hungerco;
+
+
+    private void Start()
+    {
+        tr = GetComponent<Transform>();
+    }
+
 
     private void OnEnable()
     {
@@ -51,6 +62,16 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
             case VEGE_BEHA.get_wander_pos:
 
                 gotoPos = Mathf.RoundToInt(curPos) + Random.Range(-5, 5);
+
+                if (gotoPos < curPos)
+                {
+                    tr.localScale = new Vector3(-1, 1, 1);
+                }
+                else
+                {
+                    tr.localScale = new Vector3(1, 1, 1);
+                }
+
                 switch (planet.GetPosType(gotoPos))
                 {
                     default: beha = VEGE_BEHA.wander; break;
@@ -119,6 +140,7 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
             vege.transform.eulerAngles = transform.eulerAngles;
             vege.transform.parent = planet.transform;
 
+            //vege.GetComponent<SpriteRenderer>().sprite = deadSprite;
             vege.SetActive(true);
         }
 
@@ -135,6 +157,21 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
     public override void Die()
     {
+
+        GameObject vege = ObjectPool.SharedInstance.GetPooled_KALLO();
+
+        //now using pooler
+        if (vege != null)
+        {
+            // We'll assign the correct values here cuz object pooling 
+            vege.transform.position = transform.position;
+            vege.transform.eulerAngles = transform.eulerAngles;
+            vege.transform.parent = planet.transform;
+            //vege.GetComponent<SpriteRenderer>().sprite = deadSprite;
+
+            vege.SetActive(true);
+        }
+
         planet.ModifyAmount(TYPETYPE.types.LIHIS, -1);
         gameObject.SetActive(false);
     }

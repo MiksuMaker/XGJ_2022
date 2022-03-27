@@ -13,6 +13,11 @@ public class ObjectPool : MonoBehaviour
     public GameObject objectToPool_METEORITE;
     public int amountToPool_METEORITE;
 
+
+    public List<GameObject> pooledList_METEORITE_FIRE;
+    public GameObject objectToPool_METEORITE_FIRE;
+    public int amountToPool_METEORITE_FIRE;
+
     public List<GameObject> pooledList_VEGE;
     public GameObject objectToPool_VEGE;
     public int amountToPool_VEGE;
@@ -66,6 +71,16 @@ public class ObjectPool : MonoBehaviour
             tmp = Instantiate(objectToPool_METEORITE);
             tmp.SetActive(false);
             pooledList_METEORITE.Add(tmp);
+        }
+        //------------------------
+
+        //          METEORITE_FIRE
+        pooledList_METEORITE_FIRE = new List<GameObject>();
+        for (int i = 0; i < amountToPool_METEORITE_FIRE; i++)
+        {
+            tmp = Instantiate(objectToPool_METEORITE_FIRE);
+            tmp.SetActive(false);
+            pooledList_METEORITE_FIRE.Add(tmp);
         }
         //------------------------
 
@@ -171,6 +186,19 @@ public class ObjectPool : MonoBehaviour
             if(!pooledList_METEORITE[i].activeInHierarchy)
             {
                 return pooledList_METEORITE[i];
+            }
+        }
+        return null;
+    }
+
+    public GameObject GetPooled_METEORITE_FIRE()
+    {
+
+        for (int i = 0; i < pooledList_METEORITE_FIRE.Count; i++)
+        {
+            if (!pooledList_METEORITE_FIRE[i].activeInHierarchy)
+            {
+                return pooledList_METEORITE_FIRE[i];
             }
         }
         return null;

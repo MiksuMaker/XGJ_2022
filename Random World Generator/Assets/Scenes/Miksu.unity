@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &265567641
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &423323172
 Transform:
   m_ObjectHideFlags: 0
@@ -540,7 +540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &881727083
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -849,6 +849,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test Meteorite 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6811327990501085150, guid: 99194ad6fd07bfb45a66b8c963da0428, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99194ad6fd07bfb45a66b8c963da0428, type: 3}
 --- !u!1001 &1227889030
@@ -861,6 +865,10 @@ PrefabInstance:
     - target: {fileID: 9110579743643422765, guid: 9b655b143a95cb9448f4cd0ff1e9e6ff, type: 3}
       propertyPath: m_Name
       value: Test Meteorite (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110579743643422765, guid: 9b655b143a95cb9448f4cd0ff1e9e6ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9110579743643422769, guid: 9b655b143a95cb9448f4cd0ff1e9e6ff, type: 3}
       propertyPath: m_RootOrder
@@ -996,6 +1004,10 @@ PrefabInstance:
     - target: {fileID: 4984859502223108073, guid: a7dc0a04484ec2f40a6a828ad4bbf808, type: 3}
       propertyPath: m_Name
       value: Test Meteorite 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984859502223108073, guid: a7dc0a04484ec2f40a6a828ad4bbf808, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4984859502223108085, guid: a7dc0a04484ec2f40a6a828ad4bbf808, type: 3}
       propertyPath: m_RootOrder
@@ -1171,9 +1183,9 @@ MonoBehaviour:
   minRotation: 20
   maxRotation: 60
   minSpeed: 0.01
-  maxSpeed: 0.5
+  maxSpeed: 0.3
   meteoriteSpawningOn: 1
-  showerSpeed: 0.5
+  showerSpeed: 0.75
 --- !u!1 &2022409992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,7 +1321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1427065291613818987
 Rigidbody2D:
   serializedVersion: 4
@@ -1374,6 +1386,14 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 917300602}
+    - target: {fileID: 1857586008405076964, guid: f365afeea6bcf7c49a192cae6e81c93d, type: 3}
+      propertyPath: objectToPool_METEORITE
+      value: 
+      objectReference: {fileID: 4648047935607359471, guid: 312b31ca9750e74499879d787eabbbfc, type: 3}
+    - target: {fileID: 1857586008405076964, guid: f365afeea6bcf7c49a192cae6e81c93d, type: 3}
+      propertyPath: objectToPool_METEORITE_FIRE
+      value: 
+      objectReference: {fileID: 7834713443505954003, guid: 6e70cfdb7e27a1c49a4789c64d5a0ae6, type: 3}
     - target: {fileID: 1857586008405076965, guid: f365afeea6bcf7c49a192cae6e81c93d, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1421,6 +1441,10 @@ PrefabInstance:
     - target: {fileID: 1857586008405076967, guid: f365afeea6bcf7c49a192cae6e81c93d, type: 3}
       propertyPath: m_Name
       value: ObjectPooler
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857586008405076967, guid: f365afeea6bcf7c49a192cae6e81c93d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f365afeea6bcf7c49a192cae6e81c93d, type: 3}
@@ -1491,6 +1515,10 @@ PrefabInstance:
     - target: {fileID: 5462585733926709990, guid: 1929811b66abffe48bc5fa64e6559974, type: 3}
       propertyPath: m_Name
       value: TEST_OBJECT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462585733926709990, guid: 1929811b66abffe48bc5fa64e6559974, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1929811b66abffe48bc5fa64e6559974, type: 3}
