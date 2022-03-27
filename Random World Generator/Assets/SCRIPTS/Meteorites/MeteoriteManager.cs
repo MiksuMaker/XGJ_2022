@@ -155,7 +155,8 @@ public class MeteoriteManager : MonoBehaviour
 
             // We'll assign the correct values here cuz object pooling 
             meteorite.transform.position = throwerPoint.transform.position;
-            meteorite.transform.rotation = Quaternion.identity;
+            //meteorite.transform.rotation = Quaternion.identity;
+            meteorite.transform.rotation = Quaternion.Euler(0,0,Random.Range(0, 360)); // Randomize rotation
             meteorite.SetActive(true);
 
 
@@ -163,11 +164,12 @@ public class MeteoriteManager : MonoBehaviour
             Rigidbody2D rb = meteorite.GetComponent<Rigidbody2D>();
             rb.velocity = Vector3.zero;
             rb.AddForce(flyDirection * GetRandomSpeed(), ForceMode2D.Impulse);
+            rb.AddTorque(Random.Range(-0.2f, 0.2f), ForceMode2D.Force); // Add torque
 
 
-            // Destroy the Meteorite after some time
+            // Destroy the Meteorite after some time    ----> DEACTIVATION HANDLED BY DRAGGER.cs
             //Destroy(meteorite, 10f);
-            meteorite.GetComponent<Deactivatable>().DelayDeactivate(10f);
+            //meteorite.GetComponent<Deactivatable>().DelayDeactivate(10f);
             
         }
     }

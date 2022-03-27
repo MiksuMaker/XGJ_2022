@@ -20,6 +20,10 @@ public class Dragger : MonoBehaviour
     [SerializeField] float maxForce = 50f;
     [SerializeField] float maxVelocity = 1f;
 
+    [Header("Despawning")]
+    /*[SerializeField] */float outOfBoundsDistance = 2f;
+    bool permissionToDie = false;
+
 
     private void Start()
     {
@@ -34,6 +38,46 @@ public class Dragger : MonoBehaviour
         {
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
         }
+
+        CheckIfOutOfBounds();
+        
+    }
+
+    private void CheckIfOutOfBounds()
+    {
+        // Check if out of bounds
+        if (transform.position.x > outOfBoundsDistance ||
+            transform.position.y > outOfBoundsDistance ||
+            transform.position.x < -outOfBoundsDistance ||
+            transform.position.y < -outOfBoundsDistance)
+        {
+            permissionToDie = true;
+            StartCoroutine(DespawnTimer());
+        }
+        else
+        {
+            permissionToDie = false;
+        }
+    }
+
+    private IEnumerator DespawnTimer()
+    {
+        StopCoroutine(DespawnTimer());
+
+        int lifetime = 0;
+
+        while (permissionToDie)
+        {
+            lifetime++;
+            if (lifetime > 3) { gameObject.SetActive(false); };
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    virtual public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(Vector3.zero, outOfBoundsDistance);
+        Gizmos.color = Color.red;
     }
 
     private Vector3 _dragOffset;
