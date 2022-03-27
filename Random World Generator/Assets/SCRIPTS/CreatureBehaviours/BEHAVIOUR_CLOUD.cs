@@ -25,13 +25,20 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
     [SerializeField] GameObject colli;
     [SerializeField] GameObject rain;
 
+    // Particles
+    [Header("Particles")]
+    [SerializeField] GameObject particleSpot;
+    [SerializeField] ParticleMaker particle;
+
     private int ListLen;
 
     private float Countdown = 0f;
     [SerializeField] float CountdownSet = 10f;
 
-
-
+    private void Start()
+    {
+        //particle = particleSpot.GetComponent<ParticleMaker>();
+    }
 
     private void OnEnable()
     {
@@ -40,7 +47,6 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
         beha = CLOUD_BEHA.set_start_pos;
         rain.SetActive(false);
         StartCoroutine(Dissapear(20f));
-
     }
 
     // Update is called once per frame
@@ -54,6 +60,8 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
             case CLOUD_BEHA.set_start_pos:
                 curPos = ListPos;
                 beha = CLOUD_BEHA.get_wander_pos;
+                // Do particles of BIRTH
+                particle.MakeParticles(0);
                 break;
 
             case CLOUD_BEHA.get_wander_pos:
@@ -133,6 +141,9 @@ public class BEHAVIOUR_CLOUD : SPAWNABLE
     IEnumerator Dissapear(float time)
     {
         yield return new WaitForSeconds(time);
+        //Particles
+        particle.MakeParticles(1);
+
         planet.ModifyAmount(TYPETYPE.types.CLOUD, -1);
         gameObject.SetActive(false);
 

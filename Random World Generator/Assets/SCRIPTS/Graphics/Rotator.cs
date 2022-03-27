@@ -32,7 +32,7 @@ public class Rotator : MonoBehaviour
 
     private void Start()
     {
-        //angle = Random.Range(0, 360);
+        angle = Random.Range(0, 360);
     }
 
     void Update()
@@ -58,8 +58,6 @@ public class Rotator : MonoBehaviour
     {
         angle += rotationSpeed;
 
-        Debug.Log("Angle: " + angle);
-
 
         // Rotation Calculations
         #region
@@ -72,7 +70,5 @@ public class Rotator : MonoBehaviour
 
 
         transform.eulerAngles = new Vector3(xRot, yRot, zRot);
-
-        Debug.Log("Rotation: " + transform.eulerAngles.x);
     }
 }

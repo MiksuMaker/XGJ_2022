@@ -29,6 +29,17 @@ public class ParticleMaker : MonoBehaviour
         Destroy(_particle, maxLifetime);
     }
 
+    public float GetAngle(GameObject _this, GameObject _target)
+    {
+        // Calculate rotation
+        float angle = Mathf.Atan2(_target.transform.position.y -
+                                _this.transform.position.y,
+                                _target.transform.position.x -
+                                _this.transform.position.x) * 180 / Mathf.PI;
+
+        return angle;
+    }
+
     // RESERVE, maybe necessary for Meteor to have it's own Angle Particle Maker
     //public void MakeParticlesAtAngle(int whichNumber, float angle)
     //{

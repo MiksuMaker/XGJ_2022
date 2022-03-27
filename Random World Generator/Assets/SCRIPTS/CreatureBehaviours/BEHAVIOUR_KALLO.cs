@@ -5,10 +5,14 @@ using UnityEngine;
 public class BEHAVIOUR_KALLO : SPAWNABLE
 {
 
+    [SerializeField] ParticleMaker particle;
+
     private void OnEnable()
     {
 
         StopAllCoroutines();
+
+        StartCoroutine(Splat());
         StartCoroutine(Dissapear(5f));
     }
 
@@ -19,5 +23,18 @@ public class BEHAVIOUR_KALLO : SPAWNABLE
 
 
 
+    }
+
+    IEnumerator Splat()
+    {
+
+        yield return new WaitForEndOfFrame();
+
+        if (gameObject.activeSelf)
+        {
+            // Particles
+            //particle.MakeParticles(0);
+            particle.MakeParticlesAtAngle(0, particle.GetAngle(particle.gameObject, planet.gameObject));
+        }
     }
 }

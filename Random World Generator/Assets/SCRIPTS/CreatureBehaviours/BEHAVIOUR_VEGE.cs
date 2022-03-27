@@ -30,9 +30,13 @@ public class BEHAVIOUR_VEGE : SPAWNABLE
 
     Transform tr;
 
+    [Header("Particles")]
+    [SerializeField] ParticleMaker particle;
+
     private void Start()
     {
         tr = GetComponent<Transform>();
+
     }
 
 
@@ -52,6 +56,8 @@ public class BEHAVIOUR_VEGE : SPAWNABLE
             case VEGE_BEHA.set_start_pos:
                 curPos = ListPos;
                 beha = VEGE_BEHA.get_wander_pos;
+                // PArticles
+                particle.MakeParticles(0);
                 break;
 
             case VEGE_BEHA.get_wander_pos:
