@@ -74,3 +74,6 @@ MonoBehaviour:
   pooledList_KALLO: []
   objectToPool_KALLO: {fileID: 5990419013895057804, guid: f62e2a820d7d35049b8cbc6eb13707f1, type: 3}
   amountToPool_KALLO: 24
+  pooledList_PLUSONE: []
+  objectToPool_PLUSONE: {fileID: 3101800770120587724, guid: 37305183e2b363546a5631ad6dae403f, type: 3}
+  amountToPool_PLUSONE: 24

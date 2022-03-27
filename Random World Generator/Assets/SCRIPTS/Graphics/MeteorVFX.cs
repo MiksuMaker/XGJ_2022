@@ -11,6 +11,9 @@ public class MeteorVFX : MonoBehaviour
     float soundDelay = .1f;
     bool canPlaySound = true;
 
+
+
+
     private void Start()
     {
         particle = GetComponent<ParticleMaker>();
@@ -57,10 +60,13 @@ public class MeteorVFX : MonoBehaviour
 
             // MAKE A SOUND ------------------------------------------------------------------------- HERE
             if (canPlaySound) {
-                
+
+                if (gameObject.activeSelf)
+                {
                     AudioManager.AUMA.playSound(AudioManager.AUMA.soSound1);
-                canPlaySound = false;
-                StartCoroutine(CanPlaySoundAgain(soundDelay));
+                    canPlaySound = false;
+                    StartCoroutine(CanPlaySoundAgain(soundDelay));
+                }
 
                 }
         }
