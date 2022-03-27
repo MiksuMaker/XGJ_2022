@@ -1214,9 +1214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b609dad4f53c043a55d0f4e09a0a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soSound1: {fileID: 8300000, guid: f37e97cdb0e1be840a99bf1f0559aed1, type: 3}
+  soSound1: {fileID: 8300000, guid: f03f7027543eb334788458e0d0f2d0a8, type: 3}
   soSound2: {fileID: 8300000, guid: 867f7896d53c5494ab5cbd1997931957, type: 3}
-  soSound3: {fileID: 8300000, guid: 959cc016f5d15884ea266602783d07c0, type: 3}
+  soSound3: {fileID: 8300000, guid: f03f7027543eb334788458e0d0f2d0a8, type: 3}
   soEAT: {fileID: 8300000, guid: bd0a2460f1eb73b4aaa6c7c3867d1b7f, type: 3}
   soKalaSpawn: {fileID: 8300000, guid: fedeb62a0eb290344a557746fa8bdd33, type: 3}
   soLihisSpawn: {fileID: 8300000, guid: 9f282cd78a2c53b4cbd9ba5429e83378, type: 3}
@@ -1253,13 +1253,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.506
+  m_Volume: 0.499
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 138
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
