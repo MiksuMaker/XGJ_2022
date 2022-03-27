@@ -32,6 +32,8 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
 
     Coroutine Hungerco;
 
+    // PArticles
+    [SerializeField] ParticleMaker particle;
 
     private void Start()
     {
@@ -55,6 +57,10 @@ public class BEHAVIOUR_LIHIS : SPAWNABLE
         switch (beha)
         {
             case VEGE_BEHA.set_start_pos:
+
+                // Particles
+                particle.MakeParticles(0);
+
                 curPos = ListPos;
                 beha = VEGE_BEHA.get_wander_pos;
                 break;
