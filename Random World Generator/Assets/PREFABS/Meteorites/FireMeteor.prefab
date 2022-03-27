@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDistance: 0.2
   maxDistance: 1
-  forceMultiplier: 500
+  forceMultiplier: 150
   maxForce: 5
   maxVelocity: 1
 --- !u!114 &1357050632938823877
