@@ -54,6 +54,11 @@ public class ObjectPool : MonoBehaviour
     public int amountToPool_KALLO;
 
 
+    //public List<GameObject> pooledList_PLUSONE;
+    //public GameObject objectToPool_PLUSONE;
+    //public int amountToPool_PLUSONE;
+
+
     private void Awake()
     {
         SharedInstance = this;
@@ -173,6 +178,17 @@ public class ObjectPool : MonoBehaviour
             pooledList_KALLO.Add(tmp);
         }
         //------------------------
+
+        ////          PLUSONE
+        //pooledList_PLUSONE = new List<GameObject>();
+        //for (int i = 0; i < amountToPool_PLUSONE; i++)
+        //{
+        //    tmp = Instantiate(objectToPool_PLUSONE);
+        //    tmp.GetComponent<SPAWNABLE>().SetPlanet(planet);
+        //    tmp.SetActive(false);
+        //    pooledList_PLUSONE.Add(tmp);
+        //}
+        ////------------------------
 
     }
 
@@ -305,5 +321,18 @@ public class ObjectPool : MonoBehaviour
         }
         return null;
     }
+
+
+    //public GameObject GetPooled_PLUSONE()
+    //{
+    //    for (int i = 0; i < amountToPool_PLUSONE; i++)
+    //    {
+    //        if (!pooledList_KALLO[i].activeInHierarchy)
+    //        {
+    //            return pooledList_PLUSONE[i];
+    //        }
+    //    }
+    //    return null;
+    //}
 
 }
