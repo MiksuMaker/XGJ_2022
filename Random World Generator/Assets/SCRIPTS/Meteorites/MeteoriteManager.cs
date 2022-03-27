@@ -28,16 +28,82 @@ public class MeteoriteManager : MonoBehaviour
     [Header("Bools")]
     [SerializeField] private bool meteoriteSpawningOn = true;
 
+    
     [SerializeField] private float showerSpeed = 0.01f;
 
+
+    [SerializeField] private float showerCycleSpeed = 0.1f;
+    [SerializeField] private float showerSpeedMax = 0.01f;
+    [SerializeField] private float showerSpeedMin = 0.01f;
+    [SerializeField] int SpawnState = 0;
+    [SerializeField] bool canSwitchState = false;
+
+    [SerializeField]  float cyclePos = 0;
+
+
+    [SerializeField] bool startActing = false;
+
+
+
+    public void startBehaviour()
+    {
+        startActing = true;
+    }
 
     void Start()
     {
         //MakeMeteorite();
         //ThrowMeteorite();
 
-        StartCoroutine(MeteoriteThrower());
     }
+
+
+    private void Update()
+    {
+        switch (SpawnState)
+        {
+            case 0:
+                if (startActing)
+                {
+                    SpawnState++;
+                    StartCoroutine(SwitchStateOnDelay(7f));
+                }
+                break;
+            case 1:
+                if (canSwitchState)
+                {
+                    canSwitchState = false;
+                    StartCoroutine(MeteoriteThrower());
+                    showerSpeed = showerSpeedMin;
+                    SpawnState++;
+                    StartCoroutine(SwitchStateOnDelay(7f));
+                }
+                break;
+            case 2:
+                if (canSwitchState)
+                {
+                    showerSpeed = showerSpeedMax + Mathf.Abs(Mathf.Sin(cyclePos )) * (showerSpeedMin - showerSpeedMax);
+                    cyclePos += showerCycleSpeed * Time.deltaTime;
+                    if (cyclePos > (2 * Mathf.PI))
+                    {
+                        cyclePos -= (2 * Mathf.PI);
+                    }
+                }
+                break;
+
+        }
+    }
+
+
+    private IEnumerator SwitchStateOnDelay(float time)
+    {
+            yield return new WaitForSeconds(time);
+        canSwitchState = true;
+        
+    }
+
+
+
 
     //private void MakeMeteorite(Vector2 _pos, Vector2 _target, float _speed)
     private void MakeMeteorite()

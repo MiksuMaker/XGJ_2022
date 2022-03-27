@@ -8,7 +8,7 @@ public class BEHAVIOUR_METEOR : MonoBehaviour
     {
         if (collision.GetComponent<MeteoriteCollision>())
         {
-            collision.GetComponent<MeteoriteCollision>().KillParent();
+            collision.GetComponent<MeteoriteCollision>().KillParent(transform.position);
         }
 
     }

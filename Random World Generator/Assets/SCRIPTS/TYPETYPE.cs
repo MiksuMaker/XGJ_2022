@@ -12,7 +12,7 @@ public class TYPETYPE : MonoBehaviour
 
         VEGE,LIHIS,
 
-        DEATHZONE,
+        DEATHZONE, PLUSONE,
 
         NONE
 
