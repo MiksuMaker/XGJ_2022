@@ -38,6 +38,8 @@ public class EYE_SCRIPT : MonoBehaviour
             case EYE_STATES.begin:
                 if (clicked)
                 {
+
+                    AudioManager.AUMA.playSound(AudioManager.AUMA.soSound2);
                     StartCoroutine(GoAnimation(1f, false));
                     moveOn = false;
                     state = EYE_STATES.waitToGoOut;
@@ -69,7 +71,7 @@ public class EYE_SCRIPT : MonoBehaviour
                     {
                         sr.color = new Color(1, 1, 1, 0);
                         state = EYE_STATES.waitToReappear;
-                        StartCoroutine(WaitAppear(10f));
+                        StartCoroutine(WaitAppear(25f));
                     }
                 }
                 break;
