@@ -255,9 +255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles:
-  - {fileID: 4064422262915019659, guid: 79a51418a5bf6af4bae702193573c1f2, type: 3}
-  - {fileID: 685781354530876206, guid: 93738509f6a9fe945a310c4ae46755e6, type: 3}
-  - {fileID: 3818670934635019929, guid: d0db967467b742f4cadc7f7949dd9531, type: 3}
+  - {fileID: 2344380446962776249, guid: 6e6d7768dcddd1744884f81e2fca0efa, type: 3}
+  - {fileID: 5808491972391000775, guid: 4d9c70e82f40c21468812fb7e87eb72c, type: 3}
+  - {fileID: 8525391339598572277, guid: f7be2538bbe64234b940f8bcb109cb48, type: 3}
   maxLifetime: 5
 --- !u!1 &9197771721542725929
 GameObject:
